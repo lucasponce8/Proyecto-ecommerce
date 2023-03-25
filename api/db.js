@@ -1,4 +1,4 @@
-//aqui se define la base de datos
+//aqui se define db
 //require llama dependecias o archivos locales en el back
 const mongoose = require("mongoose");
 
