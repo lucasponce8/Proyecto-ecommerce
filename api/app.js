@@ -20,7 +20,7 @@ server.use(cors());
 // Analiza el cuerpo de la solicitud en formato JSON utilizando la biblioteca integrada de Express.js.
 server.use(express.json());
 
-// Esta linea se usa para definir las rutas de la aplicación. En este caso, se comenta, lo que significa que las rutas de la aplicación no están definidas
+// Esta linea se usa para definir las rutas de la aplicación.
 server.use("/", routes);
 
 
@@ -50,6 +50,9 @@ server.listen(port, () => {
 });
 
 
+
 //Conexion base de datos
 Product.createCollection();
 dbConnect();
+
+module.exports = server;

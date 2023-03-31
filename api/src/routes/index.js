@@ -1,4 +1,3 @@
-"use strict";
 
 const { Router } = require("express");
 const express = require("express");
@@ -36,7 +35,14 @@ router.post('/product', async (req, res) => {
     } catch (error) {
         res.status(500).send('Hubo un problema con el post');
     }
+});
 
+
+router.get('/products', async (req, res) => {
+    const products = await Product.find();
+    // aquí se va a escribir el código para obtener los productos de la base de datos
+    res.status(200).json(products) 
+    
 });
 
 
