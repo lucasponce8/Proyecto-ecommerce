@@ -5,7 +5,7 @@ const express = require("express");
 const { Product } = require("../models/Products");
 const router = Router();
 
-router.post('/productos', async (req, res) => {
+router.post('/product', async (req, res) => {
     const { 
         name ,
         description,
