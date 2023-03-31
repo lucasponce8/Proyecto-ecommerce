@@ -20,6 +20,7 @@ server.use(cors());
 // Analiza el cuerpo de la solicitud en formato JSON utilizando la biblioteca integrada de Express.js.
 server.use(express.json());
 
+// Esta linea se usa para definir las rutas de la aplicación.
 server.use("/", routes);
 
 
