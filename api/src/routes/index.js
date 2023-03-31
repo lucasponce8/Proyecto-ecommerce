@@ -1,7 +1,6 @@
 const { Router } = require("express");
-const express = require("express");
-const { Product } = require("../models/Products");
-const router = Router();
+const { Product } = require("../models/Products"); // Importa el modelo de Producto desde su archivo
+const router = Router(); // Crea un nuevo enrutador de Express
 
 // ruta para postear productos
 router.post("/product", async (req, res) => {
@@ -38,22 +37,26 @@ router.get("/products", async (req, res) => {
     res.status(200).json(products);
 });
 
-// ruta para modificar la informacion del producto
+// Define la ruta PUT /productos/:id para actualizar un producto por su ID
 router.put("/product/:id", async (req, res) => {
-    const {id} = req.params;
-    const {name, price} = req.body;
+    const { id } = req.params; // Obtiene el ID del producto a actualizar desde la URL
+    const { name, price } = req.body; // Obtiene los nuevos valores para nombre y precio del cuerpo de la solicitud
 
     try {
+
+        // Intenta actualizar el producto en la base de datos utilizando el método findByIdAndUpdate de Mongoose. 
+        // Este método busca un documento en la colección de productos con el _id correspondiente al valor de id, y actualiza los campos nombre y precio con los valores correspondientes. 
+        // El tercer parámetro { new: true } indica que se debe devolver el documento actualizado en la respuesta.
         const updateProduct = await Product.findByIdAndUpdate(
-            id,
-            {name, price},
-            {new: true}
+            id, // El ID del producto a actualizar
+            { name, price }, // El nuevo nombre y precio del producto
+            { new: true } // Devuelve el producto actualizado en la respuesta
         );
 
-        res.status(200).json(updateProduct);
+        res.status(200).json(updateProduct); // Envía la respuesta con el producto actualizado en formato JSON con un status 200
     } catch (error) {
-        console.log(error);
-        res.status(500).json({message: 'Error al actualizar el producto'});
+        console.log(error);  // Muestra el error en la consola del servidor
+        res.status(500).json({ message: "Error al actualizar el producto" }); // Envía una respuesta de error con un mensaje
     }
 });
 
