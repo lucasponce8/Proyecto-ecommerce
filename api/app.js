@@ -21,7 +21,7 @@ server.use(cors());
 server.use(express.json());
 
 // Esta linea se usa para definir las rutas de la aplicación. En este caso, se comenta, lo que significa que las rutas de la aplicación no están definidas
-// server.use("/", routes);
+server.use("/", routes);
 
 
 //  Analiza las cookies enviadas con las solicitudes entrantes del cliente.
