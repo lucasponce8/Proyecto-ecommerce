@@ -9,20 +9,22 @@ const dbConnect = () => {
     //   realizo la conexion y reemplazo los datos sensibles por las variables que representan los datos sensibles
     mongoose.connect(
         `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@cluster0.9e5sypu.mongodb.net/test`,
+
         {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-        }
+        },
 
+        
         // (err, res) => {
-        //   if (!err) {
-        //     console.log("*******CONECCION EXITOSA***********");
-        //   } else {
-        //     console.error(err);
-        //     console.log("********ERROR DE CONECCION*********");
-        //   }
+        //     if (!err) {
+        //         console.log("*******CONECCION EXITOSA***********");
+        //     } else {
+        //         console.error(err);
+        //         console.log("********ERROR DE CONECCION*********");
+        //     }
         // }
-    );
+    )
 };
 
 module.exports = dbConnect;
