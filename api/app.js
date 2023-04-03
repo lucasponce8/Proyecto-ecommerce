@@ -52,7 +52,6 @@ server.listen(port, () => {
 
 
 //Conexion base de datos
-Product.createCollection();
 dbConnect();
 
 module.exports = server;
