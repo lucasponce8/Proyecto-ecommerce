@@ -60,4 +60,22 @@ router.put("/product/:id", async (req, res) => {
     }
 });
 
+router.get("/product", async (req, res) => {
+    const { name } = req.query; //el query lo saco por url
+    const filter = { name: { $regex: new RegExp(name), $options: 'i' } } ; // Si hay un valor de consulta "nombre", crear un objeto de filtro
+    try {
+        const productFilter = await Product.find(filter)
+        if (productFilter.length > 0) {
+          
+          return res.status(200).json(productFilter)
+        }
+        else{
+            return res.status(404).send({ message: "No se encontraron productos"});
+        }
+    } catch (error) {
+        res.status(500).send({ message: "Hubo un problema para buscar por nombre"})
+    }
+})
+
+
 module.exports = router;
