@@ -60,7 +60,6 @@ router.put("/product/:id", async (req, res) => {
     }
 });
 
-<<<<<<< HEAD
 // Ruta DELETE que sirve para borrar un producto de la base de datos
 
 router.delete('/product/delete/:id', async (req, res) => {
@@ -79,7 +78,6 @@ router.delete('/product/delete/:id', async (req, res) => {
     }
   });
   
-=======
 router.get("/product", async (req, res) => {
     const { name } = req.query; //el query lo saco por url
     const filter = { name: { $regex: new RegExp(name), $options: 'i' } } ; // Si hay un valor de consulta "nombre", crear un objeto de filtro
@@ -97,6 +95,5 @@ router.get("/product", async (req, res) => {
     }
 })
 
->>>>>>> 361aee0727c2d87555f661013121cfef302580e5
 
 module.exports = router;
