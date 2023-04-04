@@ -60,6 +60,24 @@ router.put("/product/:id", async (req, res) => {
     }
 });
 
+// Ruta DELETE que sirve para borrar un producto de la base de datos
+
+router.delete('/product/delete/:id', async (req, res) => {
+    const { id } = req.params;
+  
+    try {
+      const deletedProduct = await Product.findByIdAndDelete(id);
+  
+      if (!deletedProduct) {
+        return res.status(404).send({ message: 'No se encontró el producto' });
+      }
+  
+      res.status(200).send({ message: 'Producto eliminado exitosamente' });
+    } catch (error) {
+      res.status(500).send({ message: 'Error al eliminar el producto' });
+    }
+  });
+  
 router.get("/product", async (req, res) => {
     const { name } = req.query; //el query lo saco por url
     const filter = { name: { $regex: new RegExp(name), $options: 'i' } } ; // Si hay un valor de consulta "nombre", crear un objeto de filtro
