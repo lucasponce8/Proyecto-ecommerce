@@ -32,9 +32,22 @@ router.post("/product", async (req, res) => {
 
 // ruta para traer todos los productos
 router.get("/products", async (req, res) => {
-  const products = await Product.find();
-  // aquí se va a escribir el código para obtener los productos de la base de datos
-  res.status(200).json(products);
+    
+    try {
+        const products = await Product.find();
+        
+        if(products) {
+            // aquí se va a escribir el código para obtener los productos de la base de datos
+            res.status(200).json(products);
+        } else {
+            // si no hay productos en la base de datos
+            res.status(404).send({message: "No hay productos en la base de datos"});
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({message: "Hubo un problema al traer todos los productos"});        
+    }
+
 });
 
 // Define la ruta PUT /productos/:id para actualizar un producto por su ID
