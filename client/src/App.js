@@ -4,6 +4,11 @@ import './App.css';
 import { Home } from './page/Home/Home';
 import About from './page/About/About';
 import Products from './page/Products/Products';
+import PageNotFound from './page/pageNotFound/PageNotFound';
+import DetailProduct from './page/detailProduct/DetailProduct';
+
+
+
 
 function App() {
   return (
@@ -13,6 +18,9 @@ function App() {
           <Route path='/' element = {<Home/>}/> 
           <Route path='/about' element = {<About/>}/>
           <Route path='/products' element = {<Products/>}/>
+          <Route path='/detail/:id' element = {<DetailProduct/>}/>
+          <Route path='/*' element = {<PageNotFound/>}/> 
+           
 
           
         </Routes>
