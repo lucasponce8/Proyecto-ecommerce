@@ -6,6 +6,7 @@ import About from './page/About/About';
 import Products from './page/Products/Products';
 import PageNotFound from './page/pageNotFound/PageNotFound';
 import DetailProduct from './page/detailProduct/DetailProduct';
+import { CreateProduct } from './page/CreateProduct/CreateProduct';
 
 
 
@@ -20,7 +21,7 @@ function App() {
           <Route path='/products' element = {<Products/>}/>
           <Route path='/detail/:id' element = {<DetailProduct/>}/>
           <Route path='/*' element = {<PageNotFound/>}/> 
-           
+          <Route path='/create' element = {<CreateProduct/>}/>
 
           
         </Routes>
