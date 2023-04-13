@@ -4,8 +4,8 @@ import './App.css';
 import { Home } from './page/Home/Home';
 import About from './page/About/About';
 import Products from './page/Products/Products';
-import PageNotFound from './page/pageNotFound/PageNotFound';
-import DetailProduct from './page/detailProduct/DetailProduct';
+import PageNotFound from './page/PageNotFound/PageNotFound';
+import DetailProduct from './page/DetailProduct/DetailProduct';
 import { CreateProduct } from './page/CreateProduct/CreateProduct';
 
 
