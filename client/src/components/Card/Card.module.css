@@ -1,0 +1,7 @@
+.card_container {
+    width: 30em;
+    height: auto;
+    margin: 1em auto;
+    border-radius: 24px;
+    box-shadow: 1px 1px 3px 1px #00000028; 
+}
