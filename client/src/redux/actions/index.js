@@ -1,5 +1,6 @@
 import  axios  from "axios";
-export const GET_PRODUCTS = "GET_PRODUCTS"
+export const GET_PRODUCTS = "GET_PRODUCTS";
+export const GET_CATEGORIES = "GET_CATEGORIES"; 
 
 export function getProducts(){
     return async function(dispatch){
@@ -20,4 +21,16 @@ export function filterProductsByStatus(payload){
         payload,
     }
 }
-    
+
+
+export const getFilterCategories = () => {
+    return async function(dispatch) {
+        let data = await axios.get("http://localhost:3001/categories");
+
+        return dispatch({
+            type: GET_CATEGORIES,
+            payload: data.data
+        })
+    }
+
+}

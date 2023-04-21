@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const { Product } = require("../models/Products"); // Importa el modelo de Producto desde su archivo
+const { getCategories } = require("../controllers");
 const router = Router(); // Crea un nuevo enrutador de Express
 
 // ruta para postear productos
@@ -130,5 +131,16 @@ router.get("/product/:id", async (req, res) => {
     res.send({ message: "Hubo un problema para buscar por id" });
   }
 });
+
+// Ruta que trae las categorias
+router.get("/categories", async (req, res) => {
+  try {
+    const categoryDB = await getCategories();
+    res.status(200).json(categoryDB);
+  } catch (error) {
+    console.log(error)
+    res.status(404).send({ message: "No hay categorias"})
+  }
+})
 
 module.exports = router;

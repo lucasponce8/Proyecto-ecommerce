@@ -7,6 +7,7 @@ import Products from './page/Products/Products';
 import PageNotFound from './page/PageNotFound/PageNotFound';
 import DetailProduct from './page/DetailProduct/DetailProduct';
 import { CreateProduct } from './page/CreateProduct/CreateProduct';
+import NavBar from './components/NavBar/NavBar';
 
 
 
@@ -15,6 +16,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className='App'>
+        <NavBar />
         <Routes>
           <Route path='/' element = {<Home/>}/> 
           <Route path='/about' element = {<About/>}/>
