@@ -13,7 +13,8 @@ export const Home = () => {
   console.log(allProducts);
   return (
     <div>
-      <AllCards allProducts={allProducts} />
+      {/* <AllCards allProducts={allProducts} /> */}
+      Home
     </div>
   );
 };

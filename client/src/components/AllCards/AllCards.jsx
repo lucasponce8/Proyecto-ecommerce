@@ -1,11 +1,12 @@
 import React from 'react'
 import Card from '../Card/Card';
+import styles from "./AllCards.module.css"
 
 export const AllCards = ({allProducts}) => {
   console.log(allProducts);
     return (
         <>
-            <div>AllCards</div>
+            
             {
                 allProducts.length > 0 ? (allProducts.map(producto => {
                     return (

@@ -26,7 +26,7 @@ const NavBar = () => {
             >
                 <Link
                     className={styles.navbar_container_pages_btn_link}
-                    to='/'
+                    to='/products'
                 >
                     Productos
                 </Link>
@@ -63,7 +63,9 @@ const NavBar = () => {
             </li>
         </ul>
         <div className={styles.navbar_container_logo}>
-            <h1>LOGO</h1>
+            <Link to='/'>
+                <h1>Logo</h1>
+            </Link>
         </div>
         <div className={styles.navbar_container_menuOptions}>
 
