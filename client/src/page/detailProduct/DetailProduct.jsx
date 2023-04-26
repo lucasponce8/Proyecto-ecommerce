@@ -18,37 +18,48 @@ export const DetailProduct = () => {
   console.log(detailProd)
 
   return (
-    <div className={styles.description}>
-      <div className={styles.descriptionContainer}>
-        
-        <div className={styles.descriptionContainer_image}>
-          <img src={detailProd.image} alt={`Imagen de ${detailProd.name}`} />
-        </div>
-        
-        <div className={styles.descriptionContainer_info}>
-          <div className={styles.descriptionContainer_info_cnt}>
-            <div 
-              className={styles.descriptionContainer_info__name}
-            >
-              <h1>{detailProd.name}</h1>
-            </div>
-          
-            <div 
-              className={styles.descriptionContainer_info__price}
-            >
-              <h3>Precio: ${detailProd.price}</h3>
-            </div>
-            
-            <div 
-              className={styles.descriptionContainer_info__desc}
-            >
-              <p>{detailProd.description}</p>
+    <>
+      <div className={styles.description}>
+        <div className={styles.descriptionContainer}>
+
+          <div className={styles.descriptionContainer_image}>
+            <img src={detailProd.image} alt={`Imagen de ${detailProd.name}`} />
+          </div>
+
+          <div className={styles.descriptionContainer_info}>
+            <div className={styles.descriptionContainer_info_cnt}>
+              <div
+                className={styles.descriptionContainer_info__name}
+              >
+                <h1>{detailProd.name}</h1>
+              </div>
+
+              <div className={styles.descriptionContainer_info__detail}>
+
+                <div
+                  className={styles.descriptionContainer_info__desc}
+                >
+                  <p>{detailProd.description}</p>
+                </div>
+
+                <div
+                  className={styles.descriptionContainer_info__price}
+                >
+                  <h2>${detailProd.price}</h2>
+                </div>
+
+              </div>
             </div>
           </div>
+
         </div>
-      
+
+
+        {/* provisorio */}
+        <Link to='/products'>
+          Volver
+        </Link>
       </div>
-      
-    </div>
+    </>
   )
 }
