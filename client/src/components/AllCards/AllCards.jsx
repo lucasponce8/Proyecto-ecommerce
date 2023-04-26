@@ -10,6 +10,7 @@ export const AllCards = ({allProducts}) => {
                 allProducts.length > 0 ? (allProducts.map(producto => {
                     return (
                         <Card key = {producto._id}
+                        id = {producto._id}
                         description={producto.description}
                         price={producto.price}
                         image={producto.image}

@@ -1,7 +1,13 @@
-import { GET_CATEGORIES, GET_PRODUCTS } from "../actions";
+import { 
+  GET_CATEGORIES, 
+  GET_PRODUCTS, 
+  GET_PRODUCTS_DETAIL 
+} from "../actions";
+
 const initialState = {
   products: [],
   categories: [],
+  product: []
 };
 
 export function rootReducer(state = initialState, action) {
@@ -16,6 +22,11 @@ export function rootReducer(state = initialState, action) {
         ...state,
         categories: action.payload,
       };
+    case GET_PRODUCTS_DETAIL:
+      return {
+        ...state,
+        product: action.payload
+      }
     // case "FILTER_BY_STATUS":
     // const allProducts = state.products
     // const statusFiltered = action.payload === "All"? allProducts: allProducts.filter(e => e.status === action.payload)
