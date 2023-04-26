@@ -1,0 +1,17 @@
+.searchBarContainer {
+    /* background-color: rgba(127, 255, 212, 0.41); */
+    width: 95%;
+    margin: 0 auto;
+    padding: 1em 0;
+}
+
+.searchBarContainer input {
+    border-radius: 12px;
+    border: none;
+    height: 2.5em;
+    width: 80%;
+    outline: none;
+    padding: .3em .8em;
+    box-shadow: 1px 1px 3px 1px #00000028;
+
+}

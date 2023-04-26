@@ -8,6 +8,9 @@ import {
   orderByPrice,
 } from "../../redux/actions";
 import { AllCards } from "../../components/AllCards/AllCards";
+import NavFilter from "../../components/NavFilter/NavFilter";
+
+import styles from './Products.module.css';
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -39,9 +42,9 @@ const Products = () => {
   }
 
   return (
-    <div>
-      <h1>Productos</h1>
-      <div>
+    <div className={styles.productsContainer}>
+      <div className={styles.productsContainer_filters}>
+        <NavFilter />
         <select onChange={(e) => handleSort(e)}>
           <option value="asc">Ascendente</option>
           <option value="desc">Descendente</option>
@@ -55,7 +58,9 @@ const Products = () => {
           ))}
         </select>
       </div>
-      <AllCards allProducts={allProducts} />
+      <div className={styles.productsContainer_cards}>
+        <AllCards allProducts={allProducts} />
+      </div>
     </div>
   );
 };
