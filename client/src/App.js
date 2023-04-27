@@ -24,6 +24,7 @@ function App() {
           <Route path='/detail/:id' element = {<DetailProduct/>}/>
           <Route path='/*' element = {<PageNotFound/>}/> 
           <Route path='/create' element = {<CreateProduct/>}/>
+          
 
           
         </Routes>
