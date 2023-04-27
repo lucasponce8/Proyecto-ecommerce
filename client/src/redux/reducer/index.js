@@ -3,7 +3,8 @@ import {
   GET_PRODUCTS, 
   GET_PRODUCTS_DETAIL,
   FILTER_BY_CATEGORY,
-  ORDER_BY_PRICE
+  ORDER_BY_PRICE,
+  GET_PRODUCT_NAME
 } from "../actions";
 
 const initialState = {
@@ -31,13 +32,6 @@ export function rootReducer(state = initialState, action) {
         ...state,
         product: action.payload
       }
-    // case "FILTER_BY_STATUS":
-    // const allProducts = state.products
-    // const statusFiltered = action.payload === "All"? allProducts: allProducts.filter(e => e.status === action.payload)
-    // return{
-    //     ...state,
-    //     products: statusFiltered
-    // }
     case FILTER_BY_CATEGORY:
       const allProducts = state.products2
       const statusFiltered = action.payload === "All"? allProducts: allProducts.filter(e => e.category === action.payload)
@@ -56,13 +50,15 @@ export function rootReducer(state = initialState, action) {
         return priceB - priceA;
       }
       });
-  
       return {
         ...state,
         products: sortedArr
       }
-
-      
+    case GET_PRODUCT_NAME:
+      return {
+        ...state,
+        products: action.payload
+      }
     default:
       return state;
   }
