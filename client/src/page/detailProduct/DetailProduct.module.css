@@ -1,0 +1,80 @@
+.description {
+    /* background-color: chocolate; */
+    width: 100%;
+    height: 90vh;
+    padding: 2em 0;
+}
+
+.descriptionContainer {
+    /* background-color: rgba(41, 45, 164, 0.704); */
+    width: 95%;
+    height: 80vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    /* padding: 0 1em; */
+    /* box-shadow: 1px 1px 3px 1px #00000028;  */
+
+}
+
+.descriptionContainer_image {
+    /* background-color: aqua; */
+    width: 30%;
+    height: 100%;
+    /* margin: 2em 0; */
+}
+
+.descriptionContainer_info {
+    /* background-color: burlywood; */
+    width: 70%;
+    height: 100%;
+}
+
+.descriptionContainer_info_cnt {
+    box-shadow: 2px 2px 5px 2px #00000016; 
+    /* background-color: yellowgreen; */
+    width: 90%;
+    margin: 2em auto;
+    height: 90%;
+    border-radius: 12px;
+}
+
+.descriptionContainer_info__name {
+    /* background-color: brown; */
+    width: 100%;
+    height: auto;
+    padding: .5em 0;
+    
+}
+
+.descriptionContainer_info__name h1 {
+    font-size: 2.4em;
+    align-items: center;
+    
+}
+
+.descriptionContainer_info__detail {
+    /* background-color: thistle; */
+    margin: 2em 0;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.descriptionContainer_info__price {
+    /* background-color: cadetblue; */
+    width: 100%;
+    height: auto;
+    padding: .4em 0;
+    margin: 1em 0;
+}
+
+.descriptionContainer_info__desc {
+    /* background-color: cornflowerblue; */
+    margin: 1em 0;
+}
+
+.descriptionContainer_info__desc p {
+    font-size: 1.4em;
+}

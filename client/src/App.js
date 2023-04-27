@@ -5,7 +5,7 @@ import { Home } from './page/Home/Home';
 import About from './page/About/About';
 import Products from './page/Products/Products';
 import PageNotFound from './page/PageNotFound/PageNotFound';
-import DetailProduct from './page/DetailProduct/DetailProduct';
+import {DetailProduct} from './page/DetailProduct/DetailProduct';
 import { CreateProduct } from './page/CreateProduct/CreateProduct';
 import NavBar from './components/NavBar/NavBar';
 

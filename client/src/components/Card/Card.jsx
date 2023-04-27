@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from "./Card.module.css"
+import { Link } from 'react-router-dom'
 import { formToJSON } from 'axios';
 
 const Card = ({
@@ -8,7 +9,8 @@ const Card = ({
   image,
   name,
   category,
-  subcategory
+  subcategory,
+  id
 }) => {
   function formatNumber(price) {
     
@@ -26,12 +28,15 @@ const Card = ({
   }
   
   return (
-    <div className={styles.card_container}>
-      <h1>{name}</h1>
-      <img src={image} alt={`Foto de ${name}`} />
-      <h3>{description}</h3>
-      <h4>${formatNumber(price)}</h4>
-    </div>
+    <Link to={`/detail/${id}`}>
+      <div className={styles.card_container}>
+        <h1>{name}</h1>
+        <img src={image} alt={`Foto de ${name}`} />
+        <h3>{description}</h3>
+        <h4>${formatNumber(price)}</h4>
+
+      </div>
+    </Link>
   )
 }
 

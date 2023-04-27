@@ -1,9 +1,17 @@
-import { FILTER_BY_CATEGORY, GET_CATEGORIES, GET_PRODUCTS, ORDER_BY_PRICE } from "../actions";
+import { 
+  GET_CATEGORIES, 
+  GET_PRODUCTS, 
+  GET_PRODUCTS_DETAIL,
+  FILTER_BY_CATEGORY,
+  ORDER_BY_PRICE
+} from "../actions";
+
 const initialState = {
   products: [],
   categories: [],
+  product: [],
   products2: []
-};
+}
 
 export function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -18,6 +26,18 @@ export function rootReducer(state = initialState, action) {
         ...state,
         categories: action.payload,
       };
+    case GET_PRODUCTS_DETAIL:
+      return {
+        ...state,
+        product: action.payload
+      }
+    // case "FILTER_BY_STATUS":
+    // const allProducts = state.products
+    // const statusFiltered = action.payload === "All"? allProducts: allProducts.filter(e => e.status === action.payload)
+    // return{
+    //     ...state,
+    //     products: statusFiltered
+    // }
     case FILTER_BY_CATEGORY:
       const allProducts = state.products2
       const statusFiltered = action.payload === "All"? allProducts: allProducts.filter(e => e.category === action.payload)

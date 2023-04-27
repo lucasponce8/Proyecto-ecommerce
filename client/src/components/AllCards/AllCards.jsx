@@ -10,17 +10,15 @@ export const AllCards = ({allProducts}) => {
             {
                 allProducts.length > 0 ? (allProducts.map(producto => {
                     return (
-                        <div className={styles.cardsGrid}>
-
-                            <Card key = {producto._id}
-                            description={producto.description}
-                            price={producto.price}
-                            image={producto.image}
-                            name={producto.name}
-                            category={producto.category}
-                            subcategory={producto.subcategory}
-                            />
-                        </div>
+                        <Card key = {producto._id}
+                        id = {producto._id}
+                        description={producto.description}
+                        price={producto.price}
+                        image={producto.image}
+                        name={producto.name}
+                        category={producto.category}
+                        subcategory={producto.subcategory}
+                        />
                     )
                 }))
                 : (<p>No hay productos disponibles</p>)
