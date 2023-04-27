@@ -1,0 +1,87 @@
+.create_container {
+    /* background-color: aqua; */
+    width: 95%;
+    height: 90vh;
+    margin: 1em auto;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.create_container_info{
+    /* background-color: darkkhaki; */
+    width: 95%;
+    height: 50vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+.create_container_description{
+    /* background-color: chocolate; */
+    width: 95%;
+    height: 30vh;
+    margin: 1em auto;
+
+
+}
+
+.create_container_description textarea {
+    width: 90%;
+    height: 20vh;
+    margin: 2.5em auto;
+    border-radius: 12px;
+    padding: .6em;
+    border: none;
+    outline: none;
+    box-shadow: 1px 2px 4px 2px hsla(0, 0%, 0%, 0.235);
+}
+
+.create_container_info_picture{
+    /* background-color: rgb(137, 233, 122); */
+    width: 45%;
+    height: 45vh;
+    margin: 1em auto;
+    box-shadow: 1px 2px 4px 2px hsla(0, 0%, 0%, 0.235);
+
+}
+
+.create_container_info_inputs {
+    /* background-color: hotpink; */
+    width: 45%;
+    height: 45vh;
+    margin: 1em auto;
+    display: flex;
+    flex-direction: column;
+    
+    
+
+}
+
+.create_container_info_inputs input, select {
+    width: 90%;
+    height: 2.5em;
+    margin: 1em auto;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    padding: 0 .5em;
+    box-shadow: 1px 2px 4px 2px hsla(0, 0%, 0%, 0.235);
+}
+
+.button {
+    background-color: rgb(81, 0, 255);
+    width: 15em;
+    height: 3em;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1em;
+    
+}
