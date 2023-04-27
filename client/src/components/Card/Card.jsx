@@ -1,7 +1,7 @@
-import React from 'react'
-import styles from "./Card.module.css"
-import { Link } from 'react-router-dom'
-import { formToJSON } from 'axios';
+import React from "react";
+import styles from "./Card.module.css";
+import { Link } from "react-router-dom";
+import { formToJSON } from "axios";
 
 const Card = ({
   description,
@@ -10,10 +10,9 @@ const Card = ({
   name,
   category,
   subcategory,
-  id
+  id,
 }) => {
   function formatNumber(price) {
-    
     let str = price.toString();
     if (/\d+\.\d{2}$/.test(str)) {
       // Si ya tiene dos decimales, devolverla tal cual
@@ -26,7 +25,7 @@ const Card = ({
       return numFloat.replace(/\d(?=(\d{3})+\.)/g, "$&,");
     }
   }
-  
+
   return (
     <Link to={`/detail/${id}`}>
       <div className={styles.card_container}>
@@ -34,10 +33,9 @@ const Card = ({
         <img src={image} alt={`Foto de ${name}`} />
         <h3>{description}</h3>
         <h4>${formatNumber(price)}</h4>
-
       </div>
     </Link>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;
