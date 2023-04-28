@@ -19,6 +19,7 @@ const OrderFilters = () => {
   useEffect(() => {
     dispatch(getFilterCategories());
   }, [dispatch]);
+  
 
   function handleFilterCategories(e) {
     const selectedCategory = e.target.value;
@@ -32,16 +33,18 @@ const OrderFilters = () => {
   function handleSort(e) {
     e.preventDefault();
     dispatch(orderByPrice(e.target.value));
+    
     // setCurrentPage(1);
     setOrden(`Ordenado ${e.target.value}`);
+    console.log()
   }
 
   return (
     <div className={styles.filtesContainer}>
       <select onChange={(e) => handleSort(e)}>
-        <option disabled value="">Precio</option>
-        <option value="asc">Mayor</option>
-        <option value="desc">Menor</option>
+        {/* <option disabled value="">Precio</option> */}
+        <option value="asc">De menor a mayor</option>
+        <option value="desc">De mayor a menor</option>
       </select>
       <select onChange={(e) => handleFilterCategories(e)}>
         <option value="all">Todas las categorías</option>
