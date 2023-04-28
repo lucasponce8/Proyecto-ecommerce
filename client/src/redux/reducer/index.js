@@ -39,8 +39,13 @@ export function rootReducer(state = initialState, action) {
         ...state,
         products: statusFiltered,
       }
+    case GET_PRODUCT_NAME:
+      return {
+        ...state,
+        products: action.payload
+      }
     case ORDER_BY_PRICE:
-      const sortedArr = state.products.sort(function (a, b) {
+      const sortedArr = [...state.products].sort(function (a, b) {
       const priceA = parseFloat(a.price);
       const priceB = parseFloat(b.price);
 
@@ -50,14 +55,10 @@ export function rootReducer(state = initialState, action) {
         return priceB - priceA;
       }
       });
+
       return {
         ...state,
         products: sortedArr
-      }
-    case GET_PRODUCT_NAME:
-      return {
-        ...state,
-        products: action.payload
       }
     default:
       return state;
