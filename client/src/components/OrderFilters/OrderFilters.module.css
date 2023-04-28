@@ -1,0 +1,20 @@
+.filtesContainer {
+    /* background-color: blueviolet; */
+
+    width: 95%;
+    margin: 0 auto;
+}
+
+.filtesContainer select {
+    /* background-color: aquamarine; */
+    
+    width: 90%;
+    height: 1.6em;
+    margin: 1em 0;
+    border: none;
+    border-radius: 18px;
+    padding: 0 .4em;
+    box-shadow: 1px 1px 3px 1px #00000028; 
+    font-size: 1.2em;
+
+}
