@@ -5,7 +5,7 @@ import styles from "./AllCards.module.css";
 export const AllCards = ({ allProducts }) => {
   console.log(allProducts);
   return (
-    <>
+    <div className={styles.allCards_container}>
       {allProducts.length > 0 ? (
         allProducts?.map((producto) => {
           return (
@@ -24,6 +24,6 @@ export const AllCards = ({ allProducts }) => {
       ) : (
         <p>No hay productos disponibles</p>
       )}
-    </>
+    </div>
   );
 };
