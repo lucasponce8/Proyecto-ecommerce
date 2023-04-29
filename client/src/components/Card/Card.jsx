@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./Card.module.css";
 import { Link } from "react-router-dom";
 import { formToJSON } from "axios";
+import styles from "./Card.module.css";
 
 const Card = ({
   description,
@@ -29,13 +29,15 @@ const Card = ({
   return (
     <div className={styles.card_container}>
       <Link to={`/detail/${id}`} className={styles.link}>
-        <img className={styles.cardImg} src={image} alt={`Foto de ${name}`} />
+        <div className={styles.cardImg_container}>
+          <img className={styles.cardImg} src={image} alt={`Foto de ${name}`} />
+        </div>
         <div className={styles.details_container}>
           <div className={styles.name}>{name}</div>
           <p className={styles.price}>${formatNumber(price)}</p>
         </div>
       </Link>
-      </div>
+    </div>
   );
 };
 
