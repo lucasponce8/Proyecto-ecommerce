@@ -5,7 +5,7 @@
     flex-direction: column;
      margin: 1em auto;
 
-  background-color: rgb(212, 212, 212);
+  background-color: rgb(244, 244, 244);
   /* grid-template-rows: 85% 50%; */
   border: 1px solid #87878752;
   transition: .4s;

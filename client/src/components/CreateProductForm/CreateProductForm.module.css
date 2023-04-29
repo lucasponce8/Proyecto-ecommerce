@@ -34,7 +34,8 @@
     padding: .6em;
     border: none;
     outline: none;
-    box-shadow: 1px 2px 4px 2px hsla(0, 0%, 0%, 0.235);
+    box-shadow: 1px 2px 4px 2px hsla(0, 0%, 0%, 0.097);
+
 }
 
 .create_container_info_picture{
@@ -42,7 +43,8 @@
     width: 45%;
     height: 45vh;
     margin: 1em auto;
-    box-shadow: 1px 2px 4px 2px hsla(0, 0%, 0%, 0.235);
+    box-shadow: 1px 2px 4px 2px hsla(0, 0%, 0%, 0.097);
+
 
 }
 
@@ -58,7 +60,8 @@
 
 }
 
-.create_container_info_inputs input, select {
+.create_container_info_inputs input {
+    /* background-color: azure; */
     width: 90%;
     height: 2.5em;
     margin: 1em auto;
@@ -66,7 +69,11 @@
     border: none;
     outline: none;
     padding: 0 .5em;
-    box-shadow: 1px 2px 4px 2px hsla(0, 0%, 0%, 0.235);
+    box-shadow: 1px 2px 4px 2px hsla(0, 0%, 0%, 0.097);
+}
+
+::placeholder {
+    color: rgba(0, 0, 0, 0.558);
 }
 
 .create_container_button {

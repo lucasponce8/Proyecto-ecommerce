@@ -5,9 +5,9 @@ const router = Router(); // Crea un nuevo enrutador de Express
 
 // ruta para postear productos
 router.post("/product", async (req, res) => {
-  const { name, description, price, image, category, subcategory } = req.body;
+  const { name, description, price, image, category, subcategory, stock } = req.body;
 
-  if (!name || !description || !price || !category) {
+  if (!name || !description || !price || !category || !stock) {
     res.status(404).send({
       message: "Error, no se puede crear el producto porque faltan datos",
     });
@@ -21,6 +21,7 @@ router.post("/product", async (req, res) => {
       image,
       category,
       subcategory,
+      stock,
     });
 
     await product.save();
