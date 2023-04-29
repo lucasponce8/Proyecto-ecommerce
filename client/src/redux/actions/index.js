@@ -5,6 +5,7 @@ export const GET_PRODUCTS_DETAIL = "GET_PRODUCTS_DETAIL";
 export const FILTER_BY_CATEGORY = "FILTER_BY_CATEGORY";
 export const ORDER_BY_PRICE = "ORDER_BY_PRICE";
 export const GET_PRODUCT_NAME = "GET_PRODUCT_NAME";
+export const POST_PRODUCT = "POST_PRODUCT";
 
 export function getProducts() {
   return async function (dispatch) {
@@ -14,6 +15,14 @@ export function getProducts() {
       payload: json.data,
     });
   };
+}
+
+export const postProduct = (payload) => {
+  return async function(dispatch) {
+    const data = await axios.post("http://localhost:3001/products", payload);
+
+    return data;
+  }
 }
 
 export function filterProductsByCategory(payload) {
