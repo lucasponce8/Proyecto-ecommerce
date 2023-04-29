@@ -27,14 +27,15 @@ const Card = ({
   }
 
   return (
-    <Link to={`/detail/${id}`}>
-      <div className={styles.card_container}>
-        <h1>{name}</h1>
-        <img src={image} alt={`Foto de ${name}`} />
-        <h3>{description}</h3>
-        <h4>${formatNumber(price)}</h4>
+    <div className={styles.card_container}>
+      <Link to={`/detail/${id}`} className={styles.link}>
+        <img className={styles.cardImg} src={image} alt={`Foto de ${name}`} />
+        <div className={styles.details_container}>
+          <div className={styles.name}>{name}</div>
+          <p className={styles.price}>${formatNumber(price)}</p>
+        </div>
+      </Link>
       </div>
-    </Link>
   );
 };
 
