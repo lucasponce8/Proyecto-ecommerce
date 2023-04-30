@@ -52,9 +52,9 @@ export function rootReducer(state = initialState, action) {
 
       if (action.payload === "asc") {
         return priceA - priceB;
-      } else {
+      } else if (action.payload === "desc") {
         return priceB - priceA;
-      }
+      } 
       });
       return {
         ...state,

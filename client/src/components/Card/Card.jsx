@@ -11,6 +11,7 @@ const Card = ({
   category,
   subcategory,
   id,
+  stock,
 }) => {
   function formatNumber(price) {
     let str = price.toString();

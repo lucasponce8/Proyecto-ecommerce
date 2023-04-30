@@ -18,3 +18,23 @@
     font-size: 1.2em;
 
 }
+
+.filtesContainer_button {
+    width: 90%;
+    /* height: 2.5em; */
+    border: none;
+    outline: none;
+    border-radius: 18px;
+    font-size: 1.2em;
+    padding: .3em 0;
+    cursor: pointer;
+    background-color: rgb(222, 222, 222);
+    box-shadow: 1px 1px 3px 1px #00000028; 
+    transition: .4s;
+}
+
+.filtesContainer_button:hover {
+    background-color: rgb(192, 192, 192);
+    transform: scale(102%);
+    transition: .4s;
+}
