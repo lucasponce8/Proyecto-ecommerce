@@ -8,6 +8,7 @@ import PageNotFound from './page/PageNotFound/PageNotFound';
 import {DetailProduct} from './page/DetailProduct/DetailProduct';
 import { CreateProduct } from './page/CreateProduct/CreateProduct';
 import NavBar from './components/NavBar/NavBar';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -24,10 +25,8 @@ function App() {
           <Route path='/detail/:id' element = {<DetailProduct/>}/>
           <Route path='/*' element = {<PageNotFound/>}/> 
           <Route path='/create' element = {<CreateProduct/>}/>
-          
-
-          
         </Routes>
+        <Footer />  
       </div>
     </BrowserRouter>
     
