@@ -1,0 +1,100 @@
+.footerContainer {
+    background-color: rgb(76, 76, 76);
+    width: 100%;
+    height: 20em;
+    display: flex;
+    flex-direction: row;
+}
+
+.footerContainer_list {
+    /* background-color: aquamarine; */
+    width: 100%;
+    height: 20em;
+}
+
+.footerContainer_nav {
+    /* background-color: azure; */
+    width: 95%;
+    margin: 0 auto;
+    height: 18em;
+}
+
+.footerContainer_nav_ul {
+    /* background-color: bisque; */
+    /* width: 95%; */
+    height: 18em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0;
+    list-style-type: none;
+}
+
+.footerContainer_nav_ul_list {
+    /* background-color: tomato; */
+}
+
+.footerContainer_nav_ul_list__link {
+    /* background-color: chartreuse; */
+    width: fit-content;
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    transition: .4s;
+
+}
+
+.footerContainer_nav_ul_list__link:hover {
+    text-decoration: .3px underline #f8f8f8;
+    transform: scale(107%);
+    transition: .4s;
+}
+
+.footerContainer_logo {
+    /* background-color: yellowgreen; */
+    width: 100%;
+    height: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footerContainer_logo_container {
+    /* background-color: aqua; */
+    height: fit-content;
+    
+}
+
+.footerContainer_logo_container_link{
+    display: inline-block;
+    background-color: #f8f8f825;
+    text-decoration: none;
+    height: fit-content;
+    font-size: 1.5em;
+    padding: .4em 1em;
+    transition: .4s;
+    color: #f8f8f8;
+}
+
+.footerContainer_logo_container_link:hover {
+    /* text-decoration: .3px underline #f8f8f8; */
+    font-size: 1.6em;
+    
+    transform: scale(107%);
+    transition: .4s;
+
+}
+
+.footerContainer_legal {
+    /* background-color: violet; */
+    width: 100%;
+    height: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footerContainer_legal h4 {
+    /* background-color: antiquewhite; */
+    color: #f8f8f8;
+}

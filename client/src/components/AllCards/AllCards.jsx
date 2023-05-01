@@ -18,6 +18,7 @@ export const AllCards = ({ allProducts }) => {
               name={producto.name}
               category={producto.category}
               subcategory={producto.subcategory}
+              stock={producto.stock}
             />
           );
         })

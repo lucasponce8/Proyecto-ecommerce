@@ -6,13 +6,13 @@
 }
 
 .productsContainer_filters {
-    background-color: rgba(250, 235, 215, 0.329);
+    background-color: rgba(255, 255, 255, 0.329);
     
     width: 15%;
 }
 
 .productsContainer_cards {
-    background-color: rgba(95, 158, 160, 0.281);
+    background-color: rgb(246, 246, 246);
     
     width: 85%;
 }

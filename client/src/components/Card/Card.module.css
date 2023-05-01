@@ -1,46 +1,63 @@
-.card_container { display: flex;
-    width: 300px;
-    height: 385px;
+.card_container {
+    width: 20em;
+    height: auto;
+    display: flex;
     flex-direction: column;
-    margin: 1em auto;
-    
-    /* box-shadow: 1px 1px 3px 1px #00000028;  */
-    background-color: dimgrey;
-    grid-template-rows: 85% 50%;
+     margin: 1em auto;
+
+  background-color: rgb(244, 244, 244);
+  /* grid-template-rows: 85% 50%; */
+  border: 1px solid #87878752;
+  transition: .4s;
+
+}
+
+.cardImg_container {
+    /* background-color: aqua; */
+    width: 100%;
+    height: 25em;
 }
 
 .cardImg {
-    width: 300px;
-    height: 340px;
+    width: 100%;
+    height: 100%;
+}
+
+.card_container:hover {
+    transform: scale(102%);
+    box-shadow: 1px 1px 3px 1px #00000028;
+    
+
+    /* border: none;  */
+    transition: .4s;
 }
 
 .details_container {
-    display: flex;
-    width: 300px;
-    height: 45px;
-    flex-direction: row;
-    justify-content:space-between;
-    align-items:baseline;
-    align-content: flex-start;
-    gap: 50px;
-    overflow: hidden;
-    color: black;
-    background-color: bisque;
-}  
+  display: flex;
+  width: 100%;
+  height: 10em;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: black;
+  /* background-color: bisque; */
+}
 
 .link {
-    text-decoration: none;
-    
-
+  text-decoration: none;
 }
 
 .name {
-    display: flex;
-    align-self: flex-start;
-    background-color: indianred;
+  /* align-self: flex-start; */
+  font-size: 1.4em;
+    text-align: center;
+    width: 100%;
+  /* background-color: indianred; */
 }
 
 .price {
-    display: flex;
-    background-color: aquamarine;
-} 
+  font-size: 1.2em;
+    font-weight: bold;
+    width: 100%;
+  /* background-color: aquamarine; */
+}

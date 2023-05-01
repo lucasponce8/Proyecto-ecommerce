@@ -22,6 +22,12 @@
     width: 30%;
     height: 100%;
     /* margin: 2em 0; */
+    /* padding: .5em 0; */
+}
+
+.descriptionContainer_image img {
+    width: 95%;
+    height: 45em;
 }
 
 .descriptionContainer_info {
@@ -31,8 +37,8 @@
 }
 
 .descriptionContainer_info_cnt {
+    background-color: rgba(120, 120, 120, 0.04);
     box-shadow: 2px 2px 5px 2px #00000016; 
-    /* background-color: yellowgreen; */
     width: 90%;
     margin: 2em auto;
     height: 90%;

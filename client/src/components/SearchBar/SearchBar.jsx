@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import searchLogo from '../../images/search.png';
 
-import styles from './SearchBar.module.css';
 import { useDispatch } from 'react-redux';
 import { getNameProduct } from '../../redux/actions';
+import styles from './SearchBar.module.css';
 
 const SearchBar = () => {
 

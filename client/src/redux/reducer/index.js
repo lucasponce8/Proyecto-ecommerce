@@ -4,7 +4,8 @@ import {
   GET_PRODUCTS_DETAIL,
   FILTER_BY_CATEGORY,
   ORDER_BY_PRICE,
-  GET_PRODUCT_NAME
+  GET_PRODUCT_NAME,
+  POST_PRODUCT
 } from "../actions";
 
 const initialState = {
@@ -51,14 +52,17 @@ export function rootReducer(state = initialState, action) {
 
       if (action.payload === "asc") {
         return priceA - priceB;
-      } else {
+      } else if (action.payload === "desc") {
         return priceB - priceA;
-      }
+      } 
       });
-
       return {
         ...state,
         products: sortedArr
+      }
+    case POST_PRODUCT:
+      return {
+        ...state, 
       }
     default:
       return state;
