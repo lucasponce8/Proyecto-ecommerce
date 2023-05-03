@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AllCards } from "../../components/AllCards/AllCards";
-import { getProducts } from "../../redux/actions";
+import { SliderPromotion } from '../../components/SliderPromotion/SliderPromotion';
+import styles from './Home.module.css';
 
 export const Home = () => {
 
   return (
-    <div>
-      Home
+    <div className={styles.homeContainer}>
+      <div className={styles.homeContainer_slider}>
+        <SliderPromotion />
+      </div>
     </div>
   );
 };
