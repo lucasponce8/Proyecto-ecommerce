@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import {Routes, BrowserRouter, Route} from "react-router-dom";
-import './App.css';
 import { Home } from './page/Home/Home';
 import About from './page/About/About';
 import Products from './page/Products/Products';
@@ -9,7 +8,8 @@ import {DetailProduct} from './page/DetailProduct/DetailProduct';
 import { CreateProduct } from './page/CreateProduct/CreateProduct';
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 
 
