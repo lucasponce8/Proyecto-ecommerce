@@ -1,4 +1,5 @@
 import { SliderPromotion } from '../../components/SliderPromotion/SliderPromotion';
+
 import SaleBar from '../../components/SaleBar/SaleBar';
 import styles from './Home.module.css';
 
