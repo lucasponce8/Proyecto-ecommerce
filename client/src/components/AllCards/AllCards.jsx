@@ -3,7 +3,7 @@ import Card from "../Card/Card";
 import styles from "./AllCards.module.css";
 
 export const AllCards = ({ allProducts }) => {
-  console.log(allProducts);
+  // console.log(allProducts);
   return (
     <div className={styles.allCards_container}>
       {allProducts.length > 0 ? (
