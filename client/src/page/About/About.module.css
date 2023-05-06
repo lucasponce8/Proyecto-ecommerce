@@ -1,0 +1,30 @@
+.aboutConteiner_questionContent{
+    display: flex;
+    flex-direction:column;
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: left;
+    list-style: none;
+    /* background-color: bisque; */
+}
+
+.aboutConteiner_sections{
+    margin-bottom: 1em;
+    margin-top: 1em;
+    font-weight: bold;
+    /* background-color: brown; */
+}
+
+.aboutConteiner_subtitle{
+    margin-left: 17%;
+    margin-right: 17%;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 1.5em;
+
+}
+
+.aboutConteiner_title{
+    font-weight: bold;
+    margin-top: 1.5em;
+}
