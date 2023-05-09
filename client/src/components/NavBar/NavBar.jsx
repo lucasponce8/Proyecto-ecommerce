@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getFilterCategories } from "../../redux/actions";
 
+import SliderCart from "../SliderCart/SliderCart";
 import styles from "./NavBar.module.css";
 
 const NavBar = () => {
@@ -56,7 +57,15 @@ const NavBar = () => {
           <h1>Logo</h1>
         </Link>
       </div>
-      <div className={styles.navbar_container_menuOptions}></div>
+      <div className={styles.navbar_container_menuOptions}>
+        <div 
+          className={styles.navbar_container_menuOptions__cart}
+        >
+          
+          <button>Cart</button>
+          <SliderCart />
+        </div>
+      </div>
     </nav>
   );
 };

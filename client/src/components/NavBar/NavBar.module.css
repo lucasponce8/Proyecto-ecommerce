@@ -71,9 +71,24 @@
 }
 
 .navbar_container_menuOptions {
-    /* background-color: coral; */
+    background-color: coral;
     width: 35%;
     height: 4em;
     display: flex;
     flex-direction: row;
+    justify-content: end;
+    padding: 0 2em;
+}
+
+.navbar_container_menuOptions__cart {
+    background-color: aqua;
+    height: 4em;
+
+    padding: .5em;
+}
+
+.navbar_container_menuOptions__cart button {
+    font-size: 1.6em;
+    width: 3.5em;
+    height: 100%;
 }
