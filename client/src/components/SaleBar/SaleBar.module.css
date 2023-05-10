@@ -1,0 +1,24 @@
+.saleBarConteiner{
+    display: grid;
+    width: auto;
+    height: auto;
+    grid-template-rows: repeat(2,1fr);
+    row-gap: 35px;
+    column-gap: 0px;
+    /* background-color: bisque; */
+}
+
+.saleBarConteiner_cat1{
+    display: grid;
+    height: 600px;
+    width: auto;
+    gap: 30px 30px;
+    
+    /* background-color: cadetblue; */
+
+}
+.link{
+    text-decoration: none;
+    color:black;
+    /* background-color: brown; */
+}
