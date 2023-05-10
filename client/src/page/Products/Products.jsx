@@ -24,7 +24,9 @@ const Products = () => {
   const [productsPerPage, setProductsPerPage] = useState(6);//cantidad de productos por pagina
   const indexOfLastProduct = currentPage * productsPerPage //sobre la pag actual, multiplico por la cantidad de productos por pagina
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage //esto me dara el indice del primer producto
-  const currentProducts = allProducts.slice(indexOfFirstProduct, indexOfLastProduct); //esto guardara los productos que hay que renderizar de acuerdo a la pagina
+  const currentProducts = allProducts
+  .filter((producto) => producto.stock > 0) // Solo muestra los productos con stock mayor a 0
+  .slice(indexOfFirstProduct, indexOfLastProduct); //esto guardara los productos que hay que renderizar de acuerdo a la pagina
 
   const paginate = (pageNumber) => { //esto seteara la pagina de acuerdo al numero que yo vaya apretando
     setCurrentPage(pageNumber)
