@@ -16,3 +16,15 @@
     
     width: 85%;
 }
+
+.paginateStilo {
+    display: flex;
+    flex-direction: row;
+    background-color:  salmon;
+}
+
+.paginado {
+    display: flex;
+    flex-direction: column;
+    
+}
