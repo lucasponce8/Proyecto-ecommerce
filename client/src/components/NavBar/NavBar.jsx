@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getFilterCategories } from "../../redux/actions";
 
 import SliderCart from "../SliderCart/SliderCart";
@@ -11,7 +11,11 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const allCategories = useSelector((state) => state.categories);
 
-  // console.log(allCategories)
+  const [showSlider, setShowSlider] = useState(false);
+
+  const toggleSlider = () => {
+    setShowSlider(!showSlider);
+  };
 
   useEffect(() => {
     dispatch(getFilterCategories());
@@ -62,8 +66,27 @@ const NavBar = () => {
           className={styles.navbar_container_menuOptions__cart}
         >
           
-          <button>Cart</button>
-          <SliderCart />
+          <button
+            onClick={toggleSlider}
+          >
+            Cart
+          </button>
+          {
+            showSlider 
+            && 
+            <div 
+              className={`slider-overlay ${styles.sliderOverlay}`} 
+              onClick={toggleSlider}
+            >
+            </div>}
+          {
+            showSlider 
+            && 
+            <SliderCart 
+              onClose={toggleSlider} 
+            />
+          }
+          
         </div>
       </div>
     </nav>

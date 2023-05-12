@@ -15,7 +15,7 @@ export const DetailProduct = () => {
     dispatch(getProductsById(id))
   }, [dispatch, id]);
 
-  console.log(detailProd)
+  // console.log(detailProd)
 
   return (
     <>
