@@ -1,5 +1,8 @@
 .sliderContainer {
-    width: 20em;
-    height: 80vh;
-    background-color: cadetblue;
+    width: 15.1em;
+    min-height: 100vh;
+    top: 0;
+    margin: 0 -7em;
+    position: fixed;
+    background-color: rgba(95, 158, 160, 0.672);
 }

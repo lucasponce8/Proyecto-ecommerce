@@ -7,10 +7,10 @@ const SliderCart = () => {
   return (
     <div className={styles.sliderContainer}>
         <div>
-
+          
         </div>
     </div>
   )
 }
 
-export default SliderCart
+export default SliderCart;
