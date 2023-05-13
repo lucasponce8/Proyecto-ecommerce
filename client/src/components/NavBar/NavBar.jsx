@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getFilterCategories } from "../../redux/actions";
 
+import cartIcon from '../../images/cart.png';
+
 import SliderCart from "../SliderCart/SliderCart";
 import styles from "./NavBar.module.css";
 
@@ -66,16 +68,17 @@ const NavBar = () => {
           className={styles.navbar_container_menuOptions__cart}
         >
           
-          <button
+          <div
+          className={styles.cartContainer}
             onClick={toggleSlider}
           >
-            Cart
-          </button>
+            <img src={cartIcon} alt="cart" />
+          </div>
           {
             showSlider 
             && 
             <div 
-              className={`slider-overlay ${styles.sliderOverlay}`} 
+              className={styles.sliderOverlay} 
               onClick={toggleSlider}
             >
             </div>}
