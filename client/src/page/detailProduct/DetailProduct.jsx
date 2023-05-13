@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import { getProductsById } from "../../redux/actions";
 
 import styles from './DetailProduct.module.css';
+import CounterDetail from "../../components/CounterDetail/CounterDetail";
 
 export const DetailProduct = () => {
 
@@ -15,7 +16,7 @@ export const DetailProduct = () => {
     dispatch(getProductsById(id))
   }, [dispatch, id]);
 
-  // console.log(detailProd)
+  console.log(detailProd)
 
   return (
     <>
@@ -34,7 +35,9 @@ export const DetailProduct = () => {
                 <h1>{detailProd.name}</h1>
               </div>
 
-              <div className={styles.descriptionContainer_info__detail}>
+              <div 
+                className={styles.descriptionContainer_info__detail}
+              >
 
                 <div
                   className={styles.descriptionContainer_info__desc}
@@ -46,6 +49,12 @@ export const DetailProduct = () => {
                   className={styles.descriptionContainer_info__price}
                 >
                   <h2>${detailProd.price}</h2>
+                </div>
+
+                <div
+                  className={styles.descriptionContainer_info__counter}
+                >
+                  <CounterDetail stock={detailProd.stock}/>
                 </div>
 
               </div>
