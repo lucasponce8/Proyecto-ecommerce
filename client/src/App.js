@@ -10,6 +10,7 @@ import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Cart from './page/Cart/Cart';
 
 
 
@@ -25,6 +26,7 @@ function App() {
           <Route path='/detail/:id' element = {<DetailProduct/>}/>
           <Route path='/*' element = {<PageNotFound/>}/> 
           <Route path='/create' element = {<CreateProduct/>}/>
+          <Route path='/cart' element = {<Cart/>}/>
         </Routes>
         <Footer />  
       </div>
