@@ -20,7 +20,7 @@ const SliderCart = ({onClose}) => {
           </div>
           <div className={styles.sliderContainer_title}>
             <p className={styles.titleNavCart}>
-              Pedido: 
+              Pedido
             </p>
           </div>
         </div>
