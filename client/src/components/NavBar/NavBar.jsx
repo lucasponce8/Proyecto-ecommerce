@@ -1,16 +1,23 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getFilterCategories } from "../../redux/actions";
 
+import cartIcon from '../../images/cart.png';
+
+import SliderCart from "../SliderCart/SliderCart";
 import styles from "./NavBar.module.css";
 
 const NavBar = () => {
   const dispatch = useDispatch();
   const allCategories = useSelector((state) => state.categories);
 
-  // console.log(allCategories)
+  const [showSlider, setShowSlider] = useState(false);
+
+  const toggleSlider = () => {
+    setShowSlider(!showSlider);
+  };
 
   useEffect(() => {
     dispatch(getFilterCategories());
@@ -56,7 +63,35 @@ const NavBar = () => {
           <h1>Logo</h1>
         </Link>
       </div>
-      <div className={styles.navbar_container_menuOptions}></div>
+      <div className={styles.navbar_container_menuOptions}>
+        <div 
+          className={styles.navbar_container_menuOptions__cart}
+        >
+          
+          <div
+          className={styles.cartContainer}
+            onClick={toggleSlider}
+          >
+            <img src={cartIcon} alt="cart" />
+          </div>
+          {
+            showSlider 
+            && 
+            <div 
+              className={styles.sliderOverlay} 
+              onClick={toggleSlider}
+            >
+            </div>}
+          {
+            showSlider 
+            && 
+            <SliderCart 
+              onClose={toggleSlider} 
+            />
+          }
+          
+        </div>
+      </div>
     </nav>
   );
 };

@@ -1,3 +1,5 @@
+
+
 .navbar_container {
     background-color: #ccc;
     width: 100%;
@@ -76,4 +78,42 @@
     height: 4em;
     display: flex;
     flex-direction: row;
+    justify-content: end;
+    padding: 0 2em;
+}
+
+.navbar_container_menuOptions__cart {
+    /* background-color: aqua; */
+    height: 4em;
+
+    padding: .5em;
+}
+
+.cartContainer {
+    /* background-color: bisque; */
+    width: 100%;
+    height: 3em;
+    padding: 0 .6em;
+    cursor: pointer;
+}
+
+.cartContainer img {
+    width: 3em;
+}
+
+.navbar_container_menuOptions__cart button {
+    font-size: 1.6em;
+    width: 3.5em;
+    height: 100%;
+}
+
+.sliderOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+
 }
