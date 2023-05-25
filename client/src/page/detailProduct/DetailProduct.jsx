@@ -6,6 +6,9 @@ import { getProductsById } from "../../redux/actions";
 import styles from './DetailProduct.module.css';
 import CounterDetail from "../../components/CounterDetail/CounterDetail";
 
+import useCart from '../../hooks/useCart';
+
+
 export const DetailProduct = () => {
 
   const dispatch = useDispatch();
@@ -16,7 +19,11 @@ export const DetailProduct = () => {
     dispatch(getProductsById(id))
   }, [dispatch, id]);
 
-  console.log(detailProd)
+  const { cart, addToCart } = useCart()
+
+  // console.log(detailProd)
+  // console.log(cart)
+
 
   return (
     <>
@@ -54,7 +61,7 @@ export const DetailProduct = () => {
                 <div
                   className={styles.descriptionContainer_info__counter}
                 >
-                  <CounterDetail stock={detailProd.stock}/>
+                  <CounterDetail product={detailProd} addToCart={addToCart} cart={cart} />
                 </div>
 
               </div>

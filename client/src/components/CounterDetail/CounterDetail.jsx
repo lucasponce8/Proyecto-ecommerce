@@ -3,12 +3,15 @@ import React from 'react';
 import styles from './CounterDetail.module.css';
 import { useState } from 'react';
 
-const CounterDetail = ({stock}) => {
+
+const CounterDetail = ({product, addToCart, cart}) => {
   
+    
+
     const [count, setCount] = useState(0);
 
     const sumaProd = () => {
-        if(count < stock) {
+        if(count < product.stock) {
             setCount(count + 1);
         }
     }
@@ -18,11 +21,14 @@ const CounterDetail = ({stock}) => {
             setCount(count - 1)
         }
     }
+
+    console.log(cart)
+
   
     return (
     <div className={styles.counterCart}>
         <div className={styles.counterCart_info}>
-            <div 
+            {/* <div 
                 className={styles.counterCart_info_button} 
                 onClick={sumaProd}
             >
@@ -38,10 +44,11 @@ const CounterDetail = ({stock}) => {
                 onClick={restaProd}
             >
                 -
-            </div>
+            </div> */}
         </div>
         <div
             className={styles.counterCart_sendCart}
+            onClick={() => addToCart(product)}
         >
             <p>Agregar al carrito</p>
         </div>
