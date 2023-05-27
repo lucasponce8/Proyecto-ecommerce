@@ -4,10 +4,10 @@ import styles from "./Paginate.module.css"
 export default function Paginate ({productsPerPage, allProducts, paginate}){
   const pageNumbers = []
 
-  for (let i = 0; i<=Math.ceil(allProducts/productsPerPage); i++){ //divido todos los personajes por la cantidad de personajes por pagina
+  for (let i = 0; i<=Math.ceil(allProducts/productsPerPage) -1; i++){ //divido todos los personajes por la cantidad de personajes por pagina
     pageNumbers.push(i+1) //pusheo los numeros que me da el resultado al pageNumbers
   }
-  console.log(pageNumbers)
+  // console.log(pageNumbers)
 
   return(
     <div className={styles.paginateItem}>

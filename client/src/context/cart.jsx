@@ -9,28 +9,27 @@ export function CartProvider({children}) {
 
   // Para agregar un producto al carrito
   const addToCart = product => {
-    const productId = cart.findIndex(item => item.id === product.id);
+    const existingProduct = cart.find(item => item.id === product.id);
 
-    if (productId >= 0) {
-      const newCart = cart.map(item => {
+    if (existingProduct) {
+      const updatedCart = cart.map(item => {
         if (item.id === product.id) {
           return {
             ...item,
-            quantity: item.quantity += 1
+            quantity: item.quantity + 1
           };
         }
+        setCart([...cart, item]);
         return item;
       });
-
-      setCart(newCart);
+      // setCart(prevCart => [...prevCart, updatedCart]);
+      setCart(updatedCart)
     } else {
-      setCart(prevState => ([
-        ...prevState,
-        {
-          ...product,
-          quantity: 1
-        }
-      ]));
+      const newProduct = {
+        ...product,
+        quantity: 1
+      };
+      setCart(prevCart => [...prevCart, newProduct]);
     }
   };
 
