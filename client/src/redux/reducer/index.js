@@ -5,14 +5,16 @@ import {
   FILTER_BY_CATEGORY,
   ORDER_BY_PRICE,
   GET_PRODUCT_NAME,
-  POST_PRODUCT
+  POST_PRODUCT,
+  SET_LOADING
 } from "../actions";
 
 const initialState = {
   products: [],
   categories: [],
   product: [],
-  products2: []
+  products2: [],
+  isLoading: false,
 }
 
 export function rootReducer(state = initialState, action) {
@@ -31,7 +33,12 @@ export function rootReducer(state = initialState, action) {
     case GET_PRODUCTS_DETAIL:
       return {
         ...state,
-        product: action.payload
+        product: action.payload,
+      }
+    case SET_LOADING:
+      return{
+        ...state,
+        isLoading: action.payload,
       }
     case FILTER_BY_CATEGORY:
       const allProducts = state.products2
