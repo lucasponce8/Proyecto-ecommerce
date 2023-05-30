@@ -9,29 +9,26 @@ export function CartProvider({children}) {
 
   // Para agregar un producto al carrito
   const addToCart = product => {
-    const existingProduct = cart.find(item => item.id === product.id);
+    
+    product.quantity = 1;
+    
+    const existingProduct = cart.filter(item => item.id === product.id);
 
-    if (existingProduct) {
-      const updatedCart = cart.map(item => {
-        if (item.id === product.id) {
-          return {
-            ...item,
-            quantity: item.quantity + 1
-          };
-        }
-        setCart([...cart, item]);
-        return item;
-      });
-      // setCart(prevCart => [...prevCart, updatedCart]);
-      setCart(updatedCart)
-    } else {
-      const newProduct = {
-        ...product,
-        quantity: 1
-      };
-      setCart(prevCart => [...prevCart, newProduct]);
+
+    // const checkCart = cart.filter(existingProduct)
+    console.log(existingProduct)
+    
+    
+    if(existingProduct) {
+      setCart([...cart, product.quantity += 1]);
+    } else if (!existingProduct) {
+      setCart([...cart, { ...product.quantity = 1 }]);
     }
+    
+
   };
+  
+  
 
   // para borrar producto del cart
   const clearCart = () => {
