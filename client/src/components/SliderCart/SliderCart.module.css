@@ -45,3 +45,52 @@
     font-size: 1.6em;
     /* background-color: aquamarine; */
 }
+
+.sliderItems {
+    /* background-color: aqua; */
+    width: 100%;
+    min-height: 85vh;
+    margin: 0 auto;
+    padding: 0;
+
+    overflow-y: scroll;
+    position: relative;
+}
+
+.sliderItems_list {
+    /* background-color: antiquewhite; */
+    /* margin: 1em 0; */
+    width: 100%;
+    height: auto;
+    padding: 0;
+    
+    /* list-style-type: none; */
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+
+    /* justify-content: center/; */
+}
+
+
+
+
+
+
+
+
+
+
+
+.item {
+    background-color: rgba(35, 35, 35, 0.468);
+    width: 95%;
+    height: 20em;
+    margin: 3em auto;
+    list-style-type: none;
+
+}
+
+.itemImg {
+    height: 10em;
+}

@@ -66,9 +66,16 @@ export const DetailProduct = () => {
         ) : (
           <p>No hay producto para mostrar</p>
           )}
-          {/* {console.log(detailProd._id)} */}
-        {/* provisorio */}
-        <Link to="/products">Volver</Link>
+
+        <div>
+          <button
+              onClick={() => window.history.back()}
+          >
+              Volver
+          </button>
+        </div>
+                
+        
       </div>
     </>
   )
