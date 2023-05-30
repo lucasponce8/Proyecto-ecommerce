@@ -6,16 +6,47 @@ export const FILTER_BY_CATEGORY = "FILTER_BY_CATEGORY";
 export const ORDER_BY_PRICE = "ORDER_BY_PRICE";
 export const GET_PRODUCT_NAME = "GET_PRODUCT_NAME";
 export const POST_PRODUCT = "POST_PRODUCT";
+export const SET_LOADING = "SET_LOADING";
 
 export function getProducts() {
   return async function (dispatch) {
-    var json = await axios.get("http://localhost:3001/products", {});
-    return dispatch({
-      type: GET_PRODUCTS,
-      payload: json.data,
-    });
+    try {
+      const response = await axios.get("http://localhost:3001/products");
+      dispatch({
+        type: GET_PRODUCTS,
+        payload: response.data,
+      });
+      dispatch({ 
+        type: SET_LOADING, 
+        payload: true 
+      });
+      console.log(response.data)
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
+
+
+export const getProductDetail = (id) => {
+  return async function(dispatch) {
+    try {
+      const {data} = await axios.get(`http://localhost:3001/product/${id}`);
+      console.log(data)
+      return dispatch({
+        type: GET_PRODUCTS_DETAIL,
+        payload: data,
+      })
+    } catch (error) {
+      return dispatch ({
+          type: GET_PRODUCTS_DETAIL,
+          payload: []
+      });
+  };
+
+  }
+}
+
 
 export const postProduct = (payload) => {
   return async function() {
@@ -38,17 +69,6 @@ export const getFilterCategories = () => {
 
     return dispatch({
       type: GET_CATEGORIES,
-      payload: data.data,
-    });
-  };
-};
-
-export const getProductsById = (id) => {
-  return async function (dispatch) {
-    let data = await axios.get(`http://localhost:3001/product/${id}`);
-
-    return dispatch({
-      type: GET_PRODUCTS_DETAIL,
       payload: data.data,
     });
   };
