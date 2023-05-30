@@ -36,7 +36,7 @@ export const DetailProduct = () => {
     <>
       <div className={styles.description}>
         {isLoading ? (
-          <p>CARGANDO...</p>
+          <p>CARGANDO....</p>
           ) : detailProd._id ? (
             <div className={styles.descriptionContainer}>
             <div className={styles.descriptionContainer_image}>
