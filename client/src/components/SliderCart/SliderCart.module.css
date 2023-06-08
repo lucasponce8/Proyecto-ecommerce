@@ -81,16 +81,3 @@
 
 
 
-
-.item {
-    background-color: rgba(35, 35, 35, 0.468);
-    width: 95%;
-    height: 20em;
-    margin: 3em auto;
-    list-style-type: none;
-
-}
-
-.itemImg {
-    height: 10em;
-}

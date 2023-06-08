@@ -1,11 +1,11 @@
 import React from 'react';
 import useCart from '../../hooks/useCart';
-import { CartItem } from '../../components/SliderCart/SliderCart';
+import { CartItem } from '../../components/CartItem/CartItem';
 
 import styles from './Cart.module.css';
 
 const Cart = () => {
-  const { cart, addToCart } = useCart();
+  const { cart, addToCart, deleteProductCart } = useCart();
 
   return (
     <>
@@ -24,6 +24,7 @@ const Cart = () => {
                         
                         key={product._id}
                         addToCart = {() => addToCart(product)}
+                        deleteProductCart = {() => deleteProductCart(product)}
                         {...product}
                         />
                     

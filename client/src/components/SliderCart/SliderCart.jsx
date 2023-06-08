@@ -1,55 +1,18 @@
 import React, { useState } from 'react'
 
-import styles from './SliderCart.module.css'
 import useCart from '../../hooks/useCart'
 import { Link } from 'react-router-dom'
+import { CartItem } from '../CartItem/CartItem'
 
-// import cart from '../../hooks/useCart'
-
-
-export const CartItem = ({image, price, name, quantity, id, addToCart, stock, product}) => {
+import styles from './SliderCart.module.css'
 
 
 
-
-
-  return (
-
-    <li 
-      key={id}
-      className={styles.item}  
-    >
-      <img 
-        src={image} 
-        alt={name} 
-        className={styles.itemImg}
-      />
-
-      <div className={styles.itemName}>
-        <strong>{name}</strong>
-      </div>
-
-      <div className={styles.itemPrice}>
-        <strong>${price}</strong>
-      </div>
-    
-      <footer>
-        <small>
-          Cantidad: {quantity}
-        </small>
-        <button onClick={addToCart}>+</button>
-      </footer>
-    
-    
-    </li>
-  )
-
-}
 
 
 const SliderCart = ({onClose}) => {
 
-  const { cart, addToCart, changeCount } = useCart();
+  const { cart, addToCart, deleteProductCart } = useCart();
   console.log(cart)
 
   return (
@@ -77,6 +40,7 @@ const SliderCart = ({onClose}) => {
                   key={product._id}
                   stock={product.stock}
                   addToCart = {() => addToCart(product)}
+                  deleteProductCart = {() => deleteProductCart(product)}
                   {...product}
                 />
               ))

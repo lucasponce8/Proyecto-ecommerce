@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 const CounterDetail = ({product, addToCart, cart}) => {
+    
   
     const [count, setCount] = useState(0);
 
@@ -27,7 +28,8 @@ const CounterDetail = ({product, addToCart, cart}) => {
     }
 
 
-  
+    console.log(cart)
+
     return (
     <div className={styles.counterCart}>
         {/* <div className={styles.counterCart_info}>
@@ -50,14 +52,14 @@ const CounterDetail = ({product, addToCart, cart}) => {
             </div>
         </div> */}
     {
-        !false ? (
+        !cart.includes(product) ? (
 
             <div
-            className={styles.counterCart_sendCart}
-            onClick={() => addToCart(product)}
+                className={styles.counterCart_sendCart}
+                onClick={() => addToCart(product)}
             >
-        <p>Agregar al carrito</p>
-        </div>
+                <p>Agregar al carrito</p>
+            </div>
         )
         : (
 
