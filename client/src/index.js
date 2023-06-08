@@ -12,7 +12,6 @@ root.render(
   <Provider store = {store}>
     <CartProvider>
       <App />
-
     </CartProvider>
   </Provider>
 );

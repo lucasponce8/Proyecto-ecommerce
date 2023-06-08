@@ -1,41 +1,19 @@
 import React, { useState } from 'react'
 
-import styles from './SliderCart.module.css'
 import useCart from '../../hooks/useCart'
 import { Link } from 'react-router-dom'
+import { CartItem } from '../CartItem/CartItem'
 
-// import cart from '../../hooks/useCart'
+import styles from './SliderCart.module.css'
 
 
-export const CartItem = ({image, price, name, quantity, id, addToCart}) => {
 
-  return (
-
-    <li key={id}>
-      <img src={image} 
-        alt={name} 
-      />
-      <div>
-        <strong>{name} - ${price}</strong>
-      </div>
-    
-      <footer>
-        <small>
-          Cantidad: {quantity}
-        </small>
-        <button onClick={addToCart}>+</button>
-      </footer>
-    
-    </li>
-  )
-
-}
 
 
 const SliderCart = ({onClose}) => {
 
-  const { cart, addToCart } = useCart();
-  
+  const { cart, addToCart, deleteProductCart } = useCart();
+  console.log(cart)
 
   return (
     <div className={styles.sliderContainer}>
@@ -50,17 +28,19 @@ const SliderCart = ({onClose}) => {
           </div>
           <div className={styles.sliderContainer_title}>
             <p className={styles.titleNavCart}>
-              <Link to='/cart'>Carrito</Link>
+              <Link to='/cart'>Ir a pagar</Link>
             </p>
           </div>
         </div>
-        <div>
-          <ul>
+        <div className={styles.sliderItems}>
+          <ul className={styles.sliderItems_list}>
             {
               cart.map(product => (
                 <CartItem 
-                  key={product.id}
+                  key={product._id}
+                  stock={product.stock}
                   addToCart = {() => addToCart(product)}
+                  deleteProductCart = {() => deleteProductCart(product)}
                   {...product}
                 />
               ))

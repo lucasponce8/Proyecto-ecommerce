@@ -32,13 +32,14 @@ const Products = () => {
 
   const paginate = (pageNumber) => { //esto seteara la pagina de acuerdo al numero que yo vaya apretando
     setCurrentPage(pageNumber)
+    window.scrollTo(0, 0);
   }
   
   
 
   useEffect(() => {
     dispatch(getProducts());
-  }, []);
+  }, [dispatch]);
 
   
 

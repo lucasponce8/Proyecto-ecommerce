@@ -2,12 +2,12 @@ import React from 'react';
 
 import styles from './CounterDetail.module.css';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const CounterDetail = ({product, addToCart, cart}) => {
-  
     
-
+  
     const [count, setCount] = useState(0);
 
     const sumaProd = () => {
@@ -22,13 +22,18 @@ const CounterDetail = ({product, addToCart, cart}) => {
         }
     }
 
+    const onAdd = () => {
+        setCount(count)
+        addToCart({...product, quantity: count})
+    }
+
+
     console.log(cart)
 
-  
     return (
     <div className={styles.counterCart}>
-        <div className={styles.counterCart_info}>
-            {/* <div 
+        {/* <div className={styles.counterCart_info}>
+            <div 
                 className={styles.counterCart_info_button} 
                 onClick={sumaProd}
             >
@@ -44,14 +49,29 @@ const CounterDetail = ({product, addToCart, cart}) => {
                 onClick={restaProd}
             >
                 -
-            </div> */}
-        </div>
-        <div
-            className={styles.counterCart_sendCart}
-            onClick={() => addToCart(product)}
-        >
-            <p>Agregar al carrito</p>
-        </div>
+            </div>
+        </div> */}
+    {
+        !cart.includes(product) ? (
+
+            <div
+                className={styles.counterCart_sendCart}
+                onClick={() => addToCart(product)}
+            >
+                <p>Agregar al carrito</p>
+            </div>
+        )
+        : (
+
+            <Link to='/cart'>
+                <div
+                    className={styles.counterCart_sendCart}
+                >
+                    <p>Ir al carrito</p>
+                </div>
+            </Link>
+        )
+    }
     </div>
   )
 }

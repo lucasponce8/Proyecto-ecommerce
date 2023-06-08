@@ -11,6 +11,7 @@ import Footer from './components/Footer/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Cart from './page/Cart/Cart';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 
 
@@ -19,6 +20,7 @@ function App() {
     <BrowserRouter>
       <div className='App'>
         <NavBar />
+        <ScrollToTop />
         <Routes>
           <Route path='/' element = {<Home/>}/> 
           <Route path='/about' element = {<About/>}/>

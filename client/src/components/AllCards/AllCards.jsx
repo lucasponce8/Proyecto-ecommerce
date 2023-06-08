@@ -23,7 +23,7 @@ export const AllCards = ({ allProducts }) => {
           );
         })
       ) : (
-        <p>No hay productos disponibles</p>
+        <p>CARGANDO...</p>
       )}
     </div>
   );

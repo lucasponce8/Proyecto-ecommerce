@@ -1,37 +1,46 @@
-import React from 'react'
+import React from 'react';
 import useCart from '../../hooks/useCart';
-import { CartItem } from '../../components/SliderCart/SliderCart';
+import { CartItem } from '../../components/CartItem/CartItem';
 
-import styles from './Cart.module.css'
+import styles from './Cart.module.css';
 
 const Cart = () => {
-  const { cart, addToCart } = useCart();
+  const { cart, addToCart, deleteProductCart } = useCart();
 
   return (
     <>
       <div>
-        <h4>No se encuentran productos disponibles</h4>
-      </div>
-      <div className={styles.cartListContainer}>
+        {
+          cart.length > 0 ? (
+            <div className={styles.cartListContainer}>
           
-          <div className={styles.cartList}>
-            <ul> 
-              <li className={styles.items}>
-              {
-                
-                cart.map(product => (
-                  <CartItem 
+              <div className={styles.cartList}>
+                <ul> 
+                  {
                     
-                    key={product.id}
-                    addToCart = {() => addToCart(product)}
-                    {...product}
-                    />
-                  ))
-                }
-                </li>
-            </ul>
-          </div>
+                    cart.map(product => (
+                      
+                      <CartItem 
+                        
+                        key={product._id}
+                        addToCart = {() => addToCart(product)}
+                        deleteProductCart = {() => deleteProductCart(product)}
+                        {...product}
+                        />
+                    
+                      ))
+                    }
+                </ul>
+              </div>
+            </div>
+          )
+          :
+          (
+            <h4>No se encuentran productos disponibles</h4>
+          )
+        }
       </div>
+     
     </>
   )
 }

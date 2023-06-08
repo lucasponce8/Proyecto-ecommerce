@@ -26,7 +26,7 @@ export const DetailProduct = () => {
       });
   }, [dispatch, id]);
 
-  const { cart, addToCart } = useCart()
+  const { cart, addToCart, deleteProductCart } = useCart()
 
   // console.log(detailProd)
   // console.log(cart)
@@ -57,7 +57,7 @@ export const DetailProduct = () => {
                     <h2>${detailProd.price}</h2>
                   </div>
                   <div className={styles.descriptionContainer_info__counter}>
-                    <CounterDetail product={detailProd} addToCart={addToCart} cart={cart} />
+                    <CounterDetail product={detailProd} addToCart={addToCart} cart={cart}  />
                   </div>
                 </div>
               </div>
@@ -66,9 +66,16 @@ export const DetailProduct = () => {
         ) : (
           <p>No hay producto para mostrar</p>
           )}
-          {/* {console.log(detailProd._id)} */}
-        {/* provisorio */}
-        <Link to="/products">Volver</Link>
+
+        <div>
+          <button
+              onClick={() => window.history.back()}
+          >
+              Volver
+          </button>
+        </div>
+                
+        
       </div>
     </>
   )
