@@ -64,6 +64,12 @@ export function CartProvider({children}) {
     return product.quantity * product.price;
   }
 
+  // funcion para eliminar un producto del carrito
+  const deleteProduct = product => {
+    const filterProduct = cart.filter(item => item._id !== product._id);
+
+    setCart(filterProduct);
+  }
 
 
   return(
@@ -74,6 +80,7 @@ export function CartProvider({children}) {
           clearCart,
           deleteProductCart,
           calculateTotalItem,
+          deleteProduct
         } }
       >
         {children}

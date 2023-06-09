@@ -9,7 +9,8 @@ export const CartItem = ({
   stock,
   addToCart,
   deleteProductCart,
-  calculateTotalItem
+  calculateTotalItem,
+  deleteProduct
 }) => {
 
   console.log(`Stock de ${name} : ${stock}`);
@@ -38,6 +39,13 @@ export const CartItem = ({
           : <p>No se puede agregar mas</p>
         }
         <button onClick={deleteProductCart}>-</button>
+        <div>
+          <button
+            onClick={deleteProduct}
+          >
+            X
+          </button>
+        </div>
       </div>
 
       <div>

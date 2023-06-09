@@ -5,7 +5,14 @@ import { CartItem } from '../../components/CartItem/CartItem';
 import styles from './Cart.module.css';
 
 const Cart = () => {
-  const { cart, addToCart, deleteProductCart, calculateTotalItem } = useCart();
+  const { 
+    cart, 
+    addToCart, 
+    deleteProductCart, 
+    calculateTotalItem, 
+    clearCart, 
+    deleteProduct 
+  } = useCart();
 
   const calculateCartTotal = () => {
     let total = 0;
@@ -34,17 +41,24 @@ const Cart = () => {
                         addToCart = {() => addToCart(product)}
                         deleteProductCart = {() => deleteProductCart(product)}
                         calculateTotalItem={() => calculateTotalItem(product)}
-                        
+                        deleteProduct={() => deleteProduct(product)}
                         {...product}
                       />
                     
-                      ))
+                    ))
                   }
                 </ul>
               </div>
               <div>
                 <h4>Total: ${calculateCartTotal()}</h4>
               </div>
+              <div>
+                <button
+                  onClick={clearCart}
+                >
+                  Limpar carrito
+                </button>
+            </div>
             </div>
           )
           :
