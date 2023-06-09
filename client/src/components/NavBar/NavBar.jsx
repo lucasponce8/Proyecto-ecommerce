@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getFilterCategories } from "../../redux/actions";
+import useCart from "../../hooks/useCart";
 
+import { getFilterCategories } from "../../redux/actions";
 import cartIcon from '../../images/cart.png';
+import cartIconFull from '../../images/cart-full.png';
 
 import SliderCart from "../SliderCart/SliderCart";
 import styles from "./NavBar.module.css";
@@ -12,6 +14,9 @@ import styles from "./NavBar.module.css";
 const NavBar = () => {
   const dispatch = useDispatch();
   const allCategories = useSelector((state) => state.categories);
+
+  const { cart } = useCart();
+
 
   const [showSlider, setShowSlider] = useState(false);
 
@@ -69,10 +74,15 @@ const NavBar = () => {
         >
           
           <div
-          className={styles.cartContainer}
+            className={styles.cartContainer}
             onClick={toggleSlider}
           >
-            <img src={cartIcon} alt="cart" />
+            {
+              cart.length > 0 ?
+              <img src={cartIconFull} alt="cart-full" />
+              :
+              <img src={cartIcon} alt="cart" />
+            }
           </div>
           {
             showSlider 
