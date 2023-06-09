@@ -1,0 +1,8 @@
+.navbar_container_pages_btn_link:hover + .navbar_container_menuOptions_dropdown,
+.navbar_container_menuOptions_dropdown:hover {
+  display: block;
+}
+
+.navbar_container_menuOptions_dropdown {
+  display: none;
+}
