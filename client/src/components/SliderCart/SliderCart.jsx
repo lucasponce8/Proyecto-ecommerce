@@ -12,8 +12,17 @@ import styles from './SliderCart.module.css'
 
 const SliderCart = ({onClose}) => {
 
-  const { cart, addToCart, deleteProductCart } = useCart();
-  console.log(cart)
+  const { cart, addToCart, deleteProductCart, calculateTotalItem } = useCart();
+
+  const calculateCartTotal = () => {
+    let total = 0;
+
+    for (const product of cart) {
+      total += calculateTotalItem(product); 
+    }
+
+    return total;
+  }
 
   return (
     <div className={styles.sliderContainer}>
@@ -32,6 +41,15 @@ const SliderCart = ({onClose}) => {
             </p>
           </div>
         </div>
+        {
+          cart.length > 0 ?
+          <div>
+            <h3>Total: ${calculateCartTotal()}</h3>
+          </div>
+          :
+          <p>No hay productos en el carrito</p>
+
+        }
         <div className={styles.sliderItems}>
           <ul className={styles.sliderItems_list}>
             {
@@ -41,12 +59,14 @@ const SliderCart = ({onClose}) => {
                   stock={product.stock}
                   addToCart = {() => addToCart(product)}
                   deleteProductCart = {() => deleteProductCart(product)}
+                  calculateTotalItem={() => calculateTotalItem(product)}
                   {...product}
                 />
               ))
             }
           </ul>
         </div>
+
     </div>
   )
 }

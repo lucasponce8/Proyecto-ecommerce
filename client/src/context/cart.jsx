@@ -59,13 +59,21 @@ export function CartProvider({children}) {
     setCart([]);
   }
 
+  // funcion para calcular el total de cada item
+  const calculateTotalItem = product => {
+    return product.quantity * product.price;
+  }
+
+
+
   return(
       <CartContext.Provider 
         value = {{
           cart,
           addToCart,
           clearCart,
-          deleteProductCart
+          deleteProductCart,
+          calculateTotalItem,
         } }
       >
         {children}

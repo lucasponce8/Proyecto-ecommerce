@@ -5,7 +5,17 @@ import { CartItem } from '../../components/CartItem/CartItem';
 import styles from './Cart.module.css';
 
 const Cart = () => {
-  const { cart, addToCart, deleteProductCart } = useCart();
+  const { cart, addToCart, deleteProductCart, calculateTotalItem } = useCart();
+
+  const calculateCartTotal = () => {
+    let total = 0;
+
+    for (const product of cart) {
+      total += calculateTotalItem(product); 
+    }
+
+    return total;
+  }
 
   return (
     <>
@@ -16,21 +26,24 @@ const Cart = () => {
           
               <div className={styles.cartList}>
                 <ul> 
-                  {
-                    
+                  {  
                     cart.map(product => (
                       
-                      <CartItem 
-                        
+                      <CartItem   
                         key={product._id}
                         addToCart = {() => addToCart(product)}
                         deleteProductCart = {() => deleteProductCart(product)}
+                        calculateTotalItem={() => calculateTotalItem(product)}
+                        
                         {...product}
-                        />
+                      />
                     
                       ))
-                    }
+                  }
                 </ul>
+              </div>
+              <div>
+                <h4>Total: ${calculateCartTotal()}</h4>
               </div>
             </div>
           )
@@ -45,4 +58,4 @@ const Cart = () => {
   )
 }
 
-export default Cart
+export default Cart;

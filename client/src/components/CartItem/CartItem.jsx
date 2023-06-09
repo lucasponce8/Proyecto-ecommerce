@@ -1,19 +1,22 @@
 import styles from './CartItem.module.css';
 
-
 export const CartItem = ({
   image,
   price,
   name,
   quantity,
   id,
+  stock,
   addToCart,
   deleteProductCart,
-  stock,
-  product,
+  calculateTotalItem
 }) => {
 
   console.log(`Stock de ${name} : ${stock}`);
+  console.log(`Cantidad de ${name} : ${quantity}`);
+
+  const total = calculateTotalItem();
+
 
   return (
     <li key={id} className={styles.item}>
@@ -27,15 +30,19 @@ export const CartItem = ({
         <strong>${price}</strong>
       </div>
 
-      <footer>
+      <div>
         <small>Cantidad: {quantity}</small>
         {
-          quantity +1  <= stock ?           
+          quantity+1 <= stock ?           
           <button onClick={addToCart}>+</button>
           : <p>No se puede agregar mas</p>
         }
         <button onClick={deleteProductCart}>-</button>
-      </footer>
+      </div>
+
+      <div>
+        <h4>Total: ${total}</h4>
+      </div>
     </li>
   );
 };
