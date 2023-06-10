@@ -63,7 +63,16 @@ const NavBar = () => {
             Crear producto
           </Link>
         </li>
-        <ProfileAdmin />
+        <li className={styles.navbar_container_pages_btn}>
+          <Link 
+            className={styles.navbar_container_pages_btn_link} to="/pedidos"
+          >
+            Mis pedidos
+          </Link>
+        </li>
+        
+        {/* todo: mostrar aqui el profile admin */}
+        {/* <ProfileAdmin /> */}
       </ul>
       <div className={styles.navbar_container_logo}>
         <Link to="/">

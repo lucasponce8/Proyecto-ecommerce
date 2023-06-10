@@ -24,6 +24,7 @@ server.use(express.json());
 server.use("/", routes);
 
 
+
 //  Analiza las cookies enviadas con las solicitudes entrantes del cliente.
 server.use(cookieParser())
 // Registra las solicitudes entrantes del cliente y las respuestas del servidor en la consola en modo de desarrollo.

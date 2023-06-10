@@ -9,10 +9,11 @@ import { CreateProduct } from './page/CreateProduct/CreateProduct';
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
 import Cart from './page/Cart/Cart';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import MisPedidos from './page/MisPedidos/MisPedidos';
 
+import './App.css';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path='/*' element = {<PageNotFound/>}/> 
           <Route path='/create' element = {<CreateProduct/>}/>
           <Route path='/cart' element = {<Cart/>}/>
+          <Route path='/pedidos' element = {<MisPedidos/>}/>
         </Routes>
         <Footer />  
       </div>
