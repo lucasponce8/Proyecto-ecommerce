@@ -6,7 +6,7 @@ import styles from './AllCardsPedidos.module.css';
 
 const AllCardsPedidos = ({allOrders}) => {
   return (
-    <div>
+    <div className={styles.orders_container}>
         {
           allOrders.length > 0 ? (
             allOrders?.map(order => {

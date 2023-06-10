@@ -4,10 +4,10 @@ import AllCardsPedidos from '../../components/AllCardsPedidos/AllCardsPedidos';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import styles from './MisPedidos.module.css';
 import { getOrders } from '../../redux/actions';
 // Aqui va a estar toda la logica necesaria para que el administrador del ecommerce vea los pedidos que le van llegando
 
+import styles from './MisPedidos.module.css';
 
 const MisPedidos = () => {
   

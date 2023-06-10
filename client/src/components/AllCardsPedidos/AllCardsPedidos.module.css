@@ -1,0 +1,11 @@
+.orders_container {
+    /* background-color: aquamarine; */
+    width: 80%;
+    display: flex;
+
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin: 0 2em;
+}

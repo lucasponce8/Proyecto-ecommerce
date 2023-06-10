@@ -5,6 +5,7 @@ import { CartItem } from '../../components/CartItem/CartItem';
 import styles from './Cart.module.css';
 import { useDispatch } from 'react-redux';
 import { postOrder } from '../../redux/actions';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
   const { 
@@ -24,34 +25,6 @@ const Cart = () => {
     }
 
     return total;
-  }
-
-  console.log(cart)
-
-  const dispatch = useDispatch();
-
-
-
-  // traer aqui el post del action y cargarle el carrito
-  // crear una funcion nueva para que cuando le de click 
-  // al boton de agregar al carrito se pueda ejecutar esa funcion
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if(cart.length > 0) {
-      let totalOrder = calculateCartTotal()
-      const cartOrder = {
-        products: cart.map(prod => prod.name),
-        total: totalOrder
-      }
-      dispatch(postOrder(cartOrder))
-      clearCart()
-      alert('Compra realizada')
-    } else {
-      alert('No se pudo realizar la compra')
-    }
-    
   }
 
   return (
@@ -90,10 +63,13 @@ const Cart = () => {
                 </button>
             </div>
             <div>
-              <button onClick={handleSubmit}>
-                Realizar compra
-              </button>
+              <Link to='/checkout'>
+                <button>
+                  Finalizar compra
+                </button>
+              </Link>
             </div>
+
             </div>
           )
           :

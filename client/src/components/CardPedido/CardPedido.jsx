@@ -6,7 +6,7 @@ const CardPedido = ({order}) => {
 
   console.log(order.products.map(prods=> prods))
   return (
-    <div>
+    <div className={styles.cardOrder}>
       <p>orden: {order._id}</p>
       <p>total: {order.total}</p>
       <p>productos: {order.products.join(', ')}</p>

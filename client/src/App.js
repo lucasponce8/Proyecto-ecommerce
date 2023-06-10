@@ -12,6 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Cart from './page/Cart/Cart';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import MisPedidos from './page/MisPedidos/MisPedidos';
+import FormCart from './components/Form/FormCart';
 
 import './App.css';
 
@@ -27,10 +28,12 @@ function App() {
           <Route path='/about' element = {<About/>}/>
           <Route path='/products' element = {<Products/>}/>
           <Route path='/detail/:id' element = {<DetailProduct/>}/>
-          <Route path='/*' element = {<PageNotFound/>}/> 
           <Route path='/create' element = {<CreateProduct/>}/>
           <Route path='/cart' element = {<Cart/>}/>
           <Route path='/pedidos' element = {<MisPedidos/>}/>
+          <Route path='/checkout' element = {<FormCart/>}/>
+          
+          <Route path='/*' element = {<PageNotFound/>}/> 
         </Routes>
         <Footer />  
       </div>
