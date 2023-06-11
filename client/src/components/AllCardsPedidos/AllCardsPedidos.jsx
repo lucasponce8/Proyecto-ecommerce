@@ -18,7 +18,7 @@ const AllCardsPedidos = ({allOrders}) => {
 
           :
 
-          <p>Cargando...</p>
+          <p>No se encontraron pedidos</p>
         }
     </div>
   )

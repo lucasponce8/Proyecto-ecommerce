@@ -23,7 +23,7 @@ const MisPedidos = () => {
 
 
   return (
-    <div>
+    <div className={styles.allOrders_container}>
       <AllCardsPedidos allOrders={allOrders}/>
     </div>
   )
