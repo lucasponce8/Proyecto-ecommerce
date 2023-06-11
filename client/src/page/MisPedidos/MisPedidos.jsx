@@ -12,8 +12,11 @@ import styles from './MisPedidos.module.css';
 const MisPedidos = () => {
   
   const dispatch = useDispatch();
-  const allOrders = useSelector(state => state.orders);
-  
+  const orders = useSelector(state => state.orders);
+  const allOrders = [...orders].reverse();
+
+  console.log(allOrders)
+
   useEffect(() => {
     dispatch(getOrders())
   }, [dispatch]);
