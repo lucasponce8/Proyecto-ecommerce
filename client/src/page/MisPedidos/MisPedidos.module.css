@@ -1,0 +1,7 @@
+.allOrders_container {
+    background-color: rgb(248, 249, 250);
+
+    width: 100%;
+    min-height: 85vh;
+    margin: 0 auto;
+}

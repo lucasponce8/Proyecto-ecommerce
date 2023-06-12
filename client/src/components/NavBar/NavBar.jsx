@@ -9,6 +9,7 @@ import cartIcon from '../../images/cart.png';
 import cartIconFull from '../../images/cart-full.png';
 
 import SliderCart from "../SliderCart/SliderCart";
+import ProfileAdmin from "../ProfileAdmin/ProfileAdmin";
 import styles from "./NavBar.module.css";
 
 const NavBar = () => {
@@ -62,6 +63,16 @@ const NavBar = () => {
             Crear producto
           </Link>
         </li>
+        <li className={styles.navbar_container_pages_btn}>
+          <Link 
+            className={styles.navbar_container_pages_btn_link} to="/pedidos"
+          >
+            Mis pedidos
+          </Link>
+        </li>
+        
+        {/* todo: mostrar aqui el profile admin */}
+        {/* <ProfileAdmin /> */}
       </ul>
       <div className={styles.navbar_container_logo}>
         <Link to="/">

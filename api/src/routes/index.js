@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const { Product } = require("../models/Products"); // Importa el modelo de Producto desde su archivo
 const { getCategories } = require("../controllers");
+const { Order } = require("../models/Orders");
 const router = Router(); // Crea un nuevo enrutador de Express
 
 // ruta para postear productos
@@ -142,6 +143,50 @@ router.get("/categories", async (req, res) => {
     console.log(error)
     res.status(404).send({ message: "No hay categorias"})
   }
+})
+
+
+// RUTAS PARA LAS ORDENES
+
+// ruta para postear las ordenes
+router.post("/order", async (req, res) => {
+  const { products, total } = req.body;
+
+  // if(!products && !total) {
+  //     res.status(404).send({
+  //         message: 'Error, no se puede crear la orden porque faltan datos.',
+  //     });
+  // }
+
+  try {
+      let order = new Order({
+          products,
+          total,
+      });
+
+      await order.save();
+
+      res.status(200).send('Orden creada exitosamente');
+  } catch (error) {
+      res.status(500).send('Hubo un problema con el post de la orden');
+  }
+});
+
+router.get("/orders", async (req, res) => {
+  try {
+    const orders = await Order.find();
+    
+    if(orders) {
+        // aquí se va a escribir el código para obtener las ordenes de la base de datos
+        res.status(200).json(orders);
+    } else {
+        // si no hay ordenes en la base de datos
+        res.status(404).send({message: "No hay ordenes en la base de datos"});
+    }
+} catch (error) {
+    console.log(error);
+    res.status(500).send({message: "Hubo un problema al traer todas las ordenes"});        
+}
 })
 
 module.exports = router;

@@ -6,7 +6,9 @@ import {
   ORDER_BY_PRICE,
   GET_PRODUCT_NAME,
   POST_PRODUCT,
-  SET_LOADING
+  SET_LOADING,
+  GET_ORDERS,
+  POST_ORDER
 } from "../actions";
 
 const initialState = {
@@ -15,6 +17,8 @@ const initialState = {
   product: [],
   products2: [],
   isLoading: false,
+
+  orders: [],
 }
 
 export function rootReducer(state = initialState, action) {
@@ -70,6 +74,15 @@ export function rootReducer(state = initialState, action) {
     case POST_PRODUCT:
       return {
         ...state, 
+      }
+    case GET_ORDERS:
+      return {
+        ...state, 
+        orders: action.payload
+      }
+    case POST_ORDER:
+      return {
+        ...state,
       }
     default:
       return state;

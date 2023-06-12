@@ -3,6 +3,9 @@ import useCart from '../../hooks/useCart';
 import { CartItem } from '../../components/CartItem/CartItem';
 
 import styles from './Cart.module.css';
+import { useDispatch } from 'react-redux';
+import { postOrder } from '../../redux/actions';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
   const { 
@@ -59,6 +62,14 @@ const Cart = () => {
                   Limpar carrito
                 </button>
             </div>
+            <div>
+              <Link to='/checkout'>
+                <button>
+                  Finalizar compra
+                </button>
+              </Link>
+            </div>
+
             </div>
           )
           :

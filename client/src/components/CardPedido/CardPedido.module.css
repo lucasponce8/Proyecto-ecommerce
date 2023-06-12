@@ -1,0 +1,8 @@
+.cardOrder {
+    background-color: rgb(235, 235, 235);
+    
+    width: 15em;
+    height: 20em;
+    margin: .5em;
+    box-shadow: 1px 1px 3px 1px #2c2c2c44;
+}
