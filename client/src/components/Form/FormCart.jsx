@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import useCart from "../../hooks/useCart";
-import { postOrder } from "../../redux/actions";
+import { postEmail, postOrder } from "../../redux/actions";
 
 import Swal from 'sweetalert2';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -25,12 +25,17 @@ const FormCart = () => {
     return total;
   };
 
+  
+
+
+
   // estado para avisar cuando hay un pedido nuevo
   // const [hasNewOrder, setHasNewOrder] = useState(false);
 
 //   console.log(cart);
 
   const dispatch = useDispatch();
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,9 +47,20 @@ const FormCart = () => {
         products: cart.map(product => [{cantidad: product.quantity, producto: product.name}]), 
         total: totalOrder,
       };
+
+
+
+      // Obtener los valores del formulario
+    
+
       console.log(cartOrder)
       dispatch(postOrder(cartOrder));
+
+      // dispatch(postEmail(dataMail));
+
       clearCart();
+
+      
       // setHasNewOrder(true);
       Swal.fire({
         title: "Compra realizada!",
@@ -125,12 +141,12 @@ const FormCart = () => {
                     }
                     return errors;
                   }}
-                  onSubmit={(values, { setSubmitting }) => {
-                  setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
-                    setSubmitting(false);
-                  }, 400);
-                }}
+                  // onSubmit={(values) => {
+                  // setTimeout(() => {
+                  //   alert(JSON.stringify(values, null, 2));
+                  //   setSubmitting(false);
+                  // }, 400);
+                // }}
               >
                 {({ values, errors }) => (
                   <Form className={styles.formCheckout}>

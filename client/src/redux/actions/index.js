@@ -11,6 +11,8 @@ export const SET_LOADING = "SET_LOADING";
 export const GET_ORDERS = "GET_ORDERS";
 export const POST_ORDER = "POST_ORDER";
 
+export const POST_MAIL = "POST_MAIL";
+
 
 export function getProducts() {
   return async function (dispatch) {
@@ -124,6 +126,14 @@ export const postOrder = (payload) => {
   return async function() {
     const data = await axios.post("http://localhost:3001/order", payload);
 
+    return data;
+  }
+}
+
+// MAIL
+export const postEmail = (payload) => {
+  return async function () {
+    const data = await axios.post("http://localhost:3001/mails", payload);
     return data;
   }
 }

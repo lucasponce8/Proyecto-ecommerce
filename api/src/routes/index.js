@@ -2,6 +2,7 @@ const { Router } = require("express");
 const { Product } = require("../models/Products"); // Importa el modelo de Producto desde su archivo
 const { getCategories } = require("../controllers");
 const { Order } = require("../models/Orders");
+const { transporter } = require("../../config/mailer");
 const router = Router(); // Crea un nuevo enrutador de Express
 
 // ruta para postear productos
@@ -187,6 +188,32 @@ router.get("/orders", async (req, res) => {
     console.log(error);
     res.status(500).send({message: "Hubo un problema al traer todas las ordenes"});        
 }
+});
+
+
+
+// MAIL
+router.post('/mails', async (req, res) => {
+  try {
+    const { nameUser, lastnameUser, emailUser, orderUser } = req.body;
+
+    await transporter.sendMail({
+      from: '"Ecommerce" <techecommercesolutions@gmail.com>',
+      to: emailUser,
+      subject: "Pedido de ecommerce",
+      html: `
+        <h1>Hola ${nameUser} ${lastnameUser}!</h1>
+        <h3>Su pedido: </h3>
+        <p>${orderUser}</p>
+      `
+    });
+    res.status(200).send("Email enviado correctamente");
+    
+  } catch (error) {
+    console.log(error);
+    res.status(404).send(error.message);
+  }
 })
+
 
 module.exports = router;
