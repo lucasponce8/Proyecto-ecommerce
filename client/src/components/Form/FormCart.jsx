@@ -3,81 +3,17 @@ import { useDispatch } from "react-redux";
 import useCart from "../../hooks/useCart";
 import { postEmail, postOrder } from "../../redux/actions";
 
-import Swal from 'sweetalert2';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { ButtonSubmitCart } from "../ButtonSubmitCart/ButtonSubmitCart";
 
 import styles from './FormCart.module.css';
 
 const FormCart = () => {
   const {
-    cart,
-    calculateTotalItem,
-    clearCart,
+    cart
   } = useCart();
 
-  const calculateCartTotal = () => {
-    let total = 0;
-
-    for (const product of cart) {
-      total += calculateTotalItem(product);
-    }
-
-    return total;
-  };
-
   
-
-
-
-  // estado para avisar cuando hay un pedido nuevo
-  // const [hasNewOrder, setHasNewOrder] = useState(false);
-
-//   console.log(cart);
-
-  const dispatch = useDispatch();
-  
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (cart.length > 0) {
-      let totalOrder = calculateCartTotal();
-      const cartOrder = {
-        // products: [{producto: cart.map((prod) => prod.name)}],
-        products: cart.map(product => [{cantidad: product.quantity, producto: product.name}]), 
-        total: totalOrder,
-      };
-
-
-
-      // Obtener los valores del formulario
-    
-
-      console.log(cartOrder)
-      dispatch(postOrder(cartOrder));
-
-      // dispatch(postEmail(dataMail));
-
-      clearCart();
-
-      
-      // setHasNewOrder(true);
-      Swal.fire({
-        title: "Compra realizada!",
-        text: "En unos segundos sera redirigido al inicio",
-        icon: "success",
-        timer: 3000,
-        showConfirmButton: false
-      }).then(() => {
-        // Redirección a la página de inicio después de 2 segundos
-        window.location.href = "/";
-      });
-      
-    } else {
-      alert("No se pudo realizar la compra");
-    }
-  };
-
   return (
       <>
         {
@@ -171,13 +107,17 @@ const FormCart = () => {
                     <Field type="number" name="celular" placeholder='Numero de celular'/>
                     <ErrorMessage name="celular" component="div" />
 
-
+                    {
+                      console.log(values)
+                    }
                     {
                      (errors.email || errors.nombre || errors.apellido || errors. calle || errors.cp || errors.celular || !values.email) ?
                       <button disabled>Realizar compra</button>
                       :
                       <div>
-                          <button onClick={handleSubmit}>Realizar compra</button>
+                          <ButtonSubmitCart 
+                            values={values}
+                          />
                       </div>
                     }
                   </Form>

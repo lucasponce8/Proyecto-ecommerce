@@ -1,7 +1,8 @@
-const { Router } = require("express");
+const { Router, response } = require("express");
 const { Product } = require("../models/Products"); // Importa el modelo de Producto desde su archivo
-const { getCategories } = require("../controllers");
 const { Order } = require("../models/Orders");
+const { Mail } = require("../models/Mails");
+const { getCategories } = require("../controllers");
 const { transporter } = require("../../config/mailer");
 const router = Router(); // Crea un nuevo enrutador de Express
 
@@ -194,24 +195,67 @@ router.get("/orders", async (req, res) => {
 
 // MAIL
 router.post('/mails', async (req, res) => {
-  try {
-    const { nameUser, lastnameUser, emailUser, orderUser } = req.body;
 
-    await transporter.sendMail({
-      from: '"Ecommerce" <techecommercesolutions@gmail.com>',
-      to: emailUser,
+
+  const mailer = require('nodemailer');
+
+  const transporter = mailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false, 
+    auth: {
+        user: "techecommercesolutions@gmail.com",
+        pass: 'odbwtzqzogszryoi',
+    },
+  });
+
+  transporter.verify((err, success) => {
+      if(err) {
+          console.log(err);
+      } else {
+          console.log("ready for send emails", success);
+    } 
+  })
+  
+  try {
+    const { email, nombre, apellido, pedido } = req.body;
+    
+    let mailToUser = {
+      from: '<techecommercesolutions@gmail.com>',
+      to: email,
       subject: "Pedido de ecommerce",
       html: `
-        <h1>Hola ${nameUser} ${lastnameUser}!</h1>
-        <h3>Su pedido: </h3>
-        <p>${orderUser}</p>
+      <h1>Hola ${nombre} ${apellido}!</h1>
+      <h3>Su pedido: </h3>
+      ${pedido.map(item => {
+        return (
+          `
+          <li>${item}</li>
+          `
+        )
+      })}
       `
-    });
-    res.status(200).send("Email enviado correctamente");
+    } 
+    
+
+    if(email && nombre && apellido && pedido) {
+      // let mailSave = new Mail({
+      //   mail
+      // });
+  
+      // await mailSave.save()
+
+      transporter.sendMail(mailToUser)
+      res.status(200).send("Email enviado y guardado correctamente");
+    } else {
+      res.status(404).send('Faltan datos importantes para el mail');
+    }
+
+    
     
   } catch (error) {
     console.log(error);
-    res.status(404).send(error.message);
+    res.status(500).send(error.message);
   }
 })
 
