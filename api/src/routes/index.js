@@ -6,7 +6,7 @@ const router = Router(); // Crea un nuevo enrutador de Express
 
 
 require("dotenv").config();
-const { APP_PASSWORD_NODEMAILER } = process.env;
+const { APP_PASSWORD_NODEMAILER, APP_MAIL_NODEMAILER } = process.env;
 
 // ruta para postear productos
 router.post("/product", async (req, res) => {
@@ -214,8 +214,8 @@ router.post('/mails', async (req, res) => {
     port: 587,
     secure: false, 
     auth: {
-        user: "techecommercesolutions@gmail.com",
-        pass: APP_PASSWORD_NODEMAILER, //ocultar esta contraseña en el .env
+        user: APP_MAIL_NODEMAILER,
+        pass: APP_PASSWORD_NODEMAILER, 
     },
   });
 
@@ -231,7 +231,7 @@ router.post('/mails', async (req, res) => {
     const { email, nombre, apellido, pedido } = req.body;
     
     let mailToUser = {
-      from: '<techecommercesolutions@gmail.com>',
+      from: `'Nombre de ecommerce <${APP_MAIL_NODEMAILER}>'`,
       to: email,
       subject: "Pedido de ecommerce",
       html: `
