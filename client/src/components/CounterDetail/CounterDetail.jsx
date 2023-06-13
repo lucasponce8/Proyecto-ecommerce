@@ -14,6 +14,7 @@ const CounterDetail = ({product, addToCart, stock, cart}) => {
     
     // console.log(mapCartId)
     // console.log(filterCart)
+
     
     
   return (
@@ -25,7 +26,9 @@ const CounterDetail = ({product, addToCart, stock, cart}) => {
                 className={styles.counterCart_sendCart}
                 onClick={() => addToCart(product)}
             >
-                <p>Agregar al carrito</p>
+                <div>
+                    <p>Agregar al carrito</p>
+                </div>
             </div>
             :
             <Link to='/cart'>

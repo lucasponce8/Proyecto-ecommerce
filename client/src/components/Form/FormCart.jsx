@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import useCart from "../../hooks/useCart";
 import { postOrder } from "../../redux/actions";
@@ -25,6 +25,9 @@ const FormCart = () => {
     return total;
   };
 
+  // estado para avisar cuando hay un pedido nuevo
+  // const [hasNewOrder, setHasNewOrder] = useState(false);
+
 //   console.log(cart);
 
   const dispatch = useDispatch();
@@ -42,9 +45,10 @@ const FormCart = () => {
       console.log(cartOrder)
       dispatch(postOrder(cartOrder));
       clearCart();
+      // setHasNewOrder(true);
       Swal.fire({
-        title: "Felicidades!",
-        text: "Su compra fue realizada",
+        title: "Compra realizada!",
+        text: "En unos segundos sera redirigido al inicio",
         icon: "success",
         timer: 3000,
         showConfirmButton: false
@@ -164,26 +168,6 @@ const FormCart = () => {
                 )}
 
               </Formik>
-
-
-                // <form>
-                // <input type="text" placeholder="Nombre" />
-                // <input type="text" placeholder="Apellido" />
-                // <input type="email" placeholder="Ingrese su correo" />
-                // <input type="number" placeholder="Dni" />
-                // <input type="number" placeholder="Telefono" />
-                // <input type="text" placeholder="Provincia" />
-                // <input type="text" placeholder="Ciudad" />
-                // <textarea placeholder="Observaciones"></textarea>
-            
-                // <div>
-                //     <button onClick={handleSubmit}>Realizar compra</button>
-                // </div>
-                // </form>
-
-
-
-
 
             ) :
             <p>Finalizar compra no está disponible mientras tu carrito esté vacío.</p>

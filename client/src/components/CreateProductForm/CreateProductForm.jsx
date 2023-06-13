@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { getFilterCategories, postProduct } from "../../redux/actions";
 
+
 import styles from "./CreateProductForm.module.css";
 
 
@@ -108,6 +109,31 @@ const CreateProductForm = () => {
                 onChange={e => handleChange(e)}
               />
             </div>
+
+            <div>
+              {/* <Widget
+                  tabs="file url"
+                  locale="es"
+                  name="image"
+                  publicKey="d00f029a60bdde9dafab"
+                  previewStep
+                  customTabs={{ preview: effects }}
+                  clearable
+                  onFileSelect={(file) => {
+                    if (!file) {
+                      setFieldValue("image", "");
+                      return;
+                    }
+                    file.done((fileInfo) => {
+                      setFieldValue("image", fileInfo.cdnUrl);
+                    });
+                  }}
+                  onChange={(file) => {
+                    setFieldValue("image", file);
+                  }}
+                /> */}
+            </div>
+
             <div className={styles.create_container_info_inputs}>
               <input 
                 type="text" 
