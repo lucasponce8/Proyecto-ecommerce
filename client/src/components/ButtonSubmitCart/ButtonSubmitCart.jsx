@@ -47,7 +47,7 @@ export const ButtonSubmitCart = ({ values }) => {
         pedido: orderMsj,
       };
 
-      // dispatch(postEmail(infoClient));
+      dispatch(postEmail(infoClient));
       dispatch(postOrder(cartOrder));
       clearCart();
 

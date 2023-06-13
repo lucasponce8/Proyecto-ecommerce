@@ -4,6 +4,10 @@ const { Order } = require("../models/Orders");
 const { getCategories } = require("../controllers");
 const router = Router(); // Crea un nuevo enrutador de Express
 
+
+require("dotenv").config();
+const { APP_PASSWORD_NODEMAILER } = process.env;
+
 // ruta para postear productos
 router.post("/product", async (req, res) => {
   const { name, description, price, image, category, subcategory, stock } = req.body;
@@ -211,7 +215,7 @@ router.post('/mails', async (req, res) => {
     secure: false, 
     auth: {
         user: "techecommercesolutions@gmail.com",
-        pass: 'odbwtzqzogszryoi', //ocultar esta contraseña en el .env
+        pass: APP_PASSWORD_NODEMAILER, //ocultar esta contraseña en el .env
     },
   });
 
