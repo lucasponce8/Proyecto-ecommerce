@@ -28,10 +28,12 @@ export const ButtonSubmitCart = ({ values }) => {
       let totalOrder = calculateCartTotal();
       const cartOrder = {
         products: cart.map((product) => [
-          { cantidad: product.quantity, producto: product.name },
+          { cantidad: product.quantity, producto: product.name, id: product._id },
         ]),
         total: totalOrder,
       };
+
+      console.log(cartOrder)
 
       let msj = cartOrder.products.map(prods => prods.map(item => item.cantidad + ': ' + item.producto))
 
@@ -45,7 +47,7 @@ export const ButtonSubmitCart = ({ values }) => {
         pedido: orderMsj,
       };
 
-      dispatch(postEmail(infoClient));
+      // dispatch(postEmail(infoClient));
       dispatch(postOrder(cartOrder));
       clearCart();
 
@@ -53,7 +55,7 @@ export const ButtonSubmitCart = ({ values }) => {
         title: "Compra realizada!",
         text: "En unos segundos sera redirigido al inicio",
         icon: "success",
-        timer: 20000,
+        timer: 10000,
         showConfirmButton: false,
       }).then(() => {
         // Redirección a la página de inicio después de 2 segundos

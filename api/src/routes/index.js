@@ -1,9 +1,7 @@
 const { Router, response } = require("express");
 const { Product } = require("../models/Products"); // Importa el modelo de Producto desde su archivo
 const { Order } = require("../models/Orders");
-const { Mail } = require("../models/Mails");
 const { getCategories } = require("../controllers");
-const { transporter } = require("../../config/mailer");
 const router = Router(); // Crea un nuevo enrutador de Express
 
 // ruta para postear productos
@@ -154,12 +152,6 @@ router.get("/categories", async (req, res) => {
 router.post("/order", async (req, res) => {
   const { products, total } = req.body;
 
-  // if(!products && !total) {
-  //     res.status(404).send({
-  //         message: 'Error, no se puede crear la orden porque faltan datos.',
-  //     });
-  // }
-
   try {
       let order = new Order({
           products,
@@ -167,6 +159,20 @@ router.post("/order", async (req, res) => {
       });
 
       await order.save();
+
+      // Actualizar el stock de los productos comprados
+      for (const product of products) {
+        // console.log(product)
+
+        let prodQuantity = product.map(item=>item.cantidad);
+        let prodId = product.map(item=>item.id);
+
+        await Product.findByIdAndUpdate(
+          prodId,
+          { $inc: { stock: -prodQuantity } }, // Restar la cantidad comprada al stock
+          { new: true }
+        );
+      }
 
       res.status(200).send('Orden creada exitosamente');
   } catch (error) {
@@ -205,7 +211,7 @@ router.post('/mails', async (req, res) => {
     secure: false, 
     auth: {
         user: "techecommercesolutions@gmail.com",
-        pass: 'odbwtzqzogszryoi',
+        pass: 'odbwtzqzogszryoi', //ocultar esta contraseña en el .env
     },
   });
 
@@ -237,10 +243,9 @@ router.post('/mails', async (req, res) => {
       `
     } 
     
-
     if(email && nombre && apellido && pedido) {
       // let mailSave = new Mail({
-      //   mail
+      //   mailToUser
       // });
   
       // await mailSave.save()
