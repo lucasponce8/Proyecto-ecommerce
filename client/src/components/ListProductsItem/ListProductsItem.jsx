@@ -40,7 +40,9 @@ const ListProductsItem = ({
             subcategory={subcategory}
             stock={stock}
           />
-          <ButtonDeleteProduct />
+          <ButtonDeleteProduct 
+            id={id}
+          />
         </div>
       </div>
     </div>

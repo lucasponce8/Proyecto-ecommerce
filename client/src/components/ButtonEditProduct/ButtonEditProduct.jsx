@@ -47,6 +47,7 @@ const ButtonEditProduct = ({
                 stock={stock}
                 image={image}
                 id={id}
+                onOpenModal={onOpenModal}
               />
             </>
           :

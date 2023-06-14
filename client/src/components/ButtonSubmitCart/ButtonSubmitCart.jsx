@@ -55,10 +55,10 @@ export const ButtonSubmitCart = ({ values }) => {
         title: "Compra realizada!",
         text: "En unos segundos sera redirigido al inicio",
         icon: "success",
-        timer: 10000,
+        timer: 3000,
         showConfirmButton: false,
       }).then(() => {
-        // Redirección a la página de inicio después de 2 segundos
+        //  a la página de inicio después de 2 segundRedirecciónos
         window.location.href = "/";
       });
     } else {

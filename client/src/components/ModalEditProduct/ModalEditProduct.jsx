@@ -1,9 +1,12 @@
 import React from "react";
 
-import styles from "./ModalEditProduct.module.css";
 import { useDispatch } from "react-redux";
 import { editProduct } from "../../redux/actions";
 import { useState } from "react";
+import Swal from "sweetalert2";
+
+
+import styles from "./ModalEditProduct.module.css";
 
 const ModalEditProduct = ({
     name,
@@ -13,7 +16,8 @@ const ModalEditProduct = ({
     subcategory,
     stock,
     image,
-    id
+    id,
+    onOpenModal
 }) => {
     
     const [input, setInput] = useState({
@@ -36,13 +40,24 @@ const ModalEditProduct = ({
     const onProductChangeSubmit = (e) => {
         e.preventDefault();
 
-        console.log(input)
+        // console.log(input)
 
 
 
         dispatch(editProduct(input.id, input));
+        onOpenModal()
 
-        window.location.href = `/detail/${input.id}`;
+        Swal.fire({
+            title: "Producto modificado!",
+            text: "En unos segundos sera redirigido al producto",
+            icon: "success",
+            timer: 3000,
+            showConfirmButton: false,
+          }).then(() => {
+            window.location.href = `/detail/${input.id}`;
+
+          });
+
     }
 
 

@@ -7,6 +7,7 @@ export const ORDER_BY_PRICE = "ORDER_BY_PRICE";
 export const GET_PRODUCT_NAME = "GET_PRODUCT_NAME";
 export const POST_PRODUCT = "POST_PRODUCT";
 export const EDIT_PRODUCT = "EDIT_PRODUCT";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
 
 export const SET_LOADING = "SET_LOADING";
 
@@ -75,6 +76,19 @@ export const editProduct = (id, payload) => {
       }) 
     } catch (error) {
       console.log(error);
+    }
+  }
+}
+
+export const deleteProduct = (id) => {
+  return async function() {
+    try {
+      const data = await axios.delete(`http://localhost:3001/product/delete/${id}`);
+
+      return data;
+
+    } catch (error) {
+      console.log(error)
     }
   }
 }
