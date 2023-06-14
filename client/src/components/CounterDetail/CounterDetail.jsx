@@ -10,7 +10,7 @@ const CounterDetail = ({product, addToCart, stock, cart}) => {
 
     let mapCartId = cart.map(item => item._id);
     
-    let filterCart = mapCartId.includes(product._id)
+    let filterCart = mapCartId.includes(product._id);
     
     // console.log(mapCartId)
     // console.log(filterCart)

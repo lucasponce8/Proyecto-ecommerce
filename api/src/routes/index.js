@@ -60,7 +60,7 @@ router.get("/products", async (req, res) => {
 // Define la ruta PUT /productos/:id para actualizar un producto por su ID
 router.put("/product/:id", async (req, res) => {
   const { id } = req.params; // Obtiene el ID del producto a actualizar desde la URL
-  const { name, price } = req.body; // Obtiene los nuevos valores para nombre y precio del cuerpo de la solicitud
+  const { name, price, stock } = req.body; // Obtiene los nuevos valores para nombre y precio del cuerpo de la solicitud
 
   try {
     // Intenta actualizar el producto en la base de datos utilizando el método findByIdAndUpdate de Mongoose.
@@ -68,7 +68,7 @@ router.put("/product/:id", async (req, res) => {
     // El tercer parámetro { new: true } indica que se debe devolver el documento actualizado en la respuesta.
     const updateProduct = await Product.findByIdAndUpdate(
       id, // El ID del producto a actualizar
-      { name, price }, // El nuevo nombre y precio del producto
+      { name, price, stock }, // El nuevo nombre y precio del producto
       { new: true } // Devuelve el producto actualizado en la respuesta
     );
 

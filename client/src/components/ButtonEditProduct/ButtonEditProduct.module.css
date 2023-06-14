@@ -1,0 +1,31 @@
+.counterCart_sendCart {
+    background-color: rgb(199, 187, 24);
+
+    width: 10em;
+    height: 2.5em;
+    margin: .5em auto;
+    color: #fff;
+    padding: .4em;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.counterCart_sendCart:hover {
+    background-color: rgb(169, 159, 20);
+    transition: .2s;
+    color: #fff;
+    transform: scale(105%);
+}
+
+.sliderOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+
+}
