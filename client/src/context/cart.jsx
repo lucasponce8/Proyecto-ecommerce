@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react'
+import { useState, createContext, useEffect } from 'react'
 
 export const CartContext = createContext();
 
@@ -6,7 +6,20 @@ export function CartProvider({children}) {
 
   // crear el provider
   const [cart, setCart] = useState([]);
+  
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    setCart(storedCart);
+  }, []);
 
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  // useEffect(() => {
+  //   const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+  //   setCart(storedCart);
+  // }, []);
 
 
   // Para agregar un producto al carrito
