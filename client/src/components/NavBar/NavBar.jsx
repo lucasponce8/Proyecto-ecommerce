@@ -70,14 +70,21 @@ const NavBar = () => {
             Mis pedidos
           </Link>
         </li>
+        <li className={styles.navbar_container_pages_btn}>
+          <Link 
+            className={styles.navbar_container_pages_btn_link} to="/myproducts"
+          >
+            Mis productos
+          </Link>
+        </li>
         
         {/* todo: mostrar aqui el profile admin */}
         {/* <ProfileAdmin /> */}
       </ul>
       <div className={styles.navbar_container_logo}>
-        <Link to="/">
+        {/* <Link to="/">
           <h1>Logo</h1>
-        </Link>
+        </Link> */}
       </div>
       <div className={styles.navbar_container_menuOptions}>
         <div 

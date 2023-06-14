@@ -1,0 +1,13 @@
+.formCheckout {
+    /* background-color: beige; */
+
+    width: 80%;
+    height: 40em;
+    margin: 1em auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 4em;
+    box-shadow: 1px 1px 4px 2px #0000002d;
+    border-radius: 14px;
+}

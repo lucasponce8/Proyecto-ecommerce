@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import {Routes, BrowserRouter, Route} from "react-router-dom";
 import { Home } from './page/Home/Home';
 import About from './page/About/About';
@@ -13,6 +12,7 @@ import Cart from './page/Cart/Cart';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import MisPedidos from './page/MisPedidos/MisPedidos';
 import FormCart from './components/Form/FormCart';
+import MisProductos from "./page/MisProductos/MisProductos";
 
 import './App.css';
 
@@ -31,6 +31,7 @@ function App() {
           <Route path='/create' element = {<CreateProduct/>}/>
           <Route path='/cart' element = {<Cart/>}/>
           <Route path='/pedidos' element = {<MisPedidos/>}/>
+          <Route path='/myproducts' element = {<MisProductos/>}/>
           <Route path='/checkout' element = {<FormCart/>}/>
           
           <Route path='/*' element = {<PageNotFound/>}/> 

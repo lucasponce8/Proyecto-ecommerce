@@ -6,10 +6,15 @@ export const FILTER_BY_CATEGORY = "FILTER_BY_CATEGORY";
 export const ORDER_BY_PRICE = "ORDER_BY_PRICE";
 export const GET_PRODUCT_NAME = "GET_PRODUCT_NAME";
 export const POST_PRODUCT = "POST_PRODUCT";
+export const EDIT_PRODUCT = "EDIT_PRODUCT";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
+
 export const SET_LOADING = "SET_LOADING";
 
 export const GET_ORDERS = "GET_ORDERS";
 export const POST_ORDER = "POST_ORDER";
+
+export const POST_MAIL = "POST_MAIL";
 
 
 export function getProducts() {
@@ -57,6 +62,34 @@ export const postProduct = (payload) => {
     const data = await axios.post("http://localhost:3001/product", payload);
 
     return data;
+  }
+}
+
+
+export const editProduct = (id, payload) => {
+  return async function (dispatch) {
+    try {
+      const { data } = await axios.put(`http://localhost:3001/product/${id}`, payload);
+      return dispatch ({
+        type: EDIT_PRODUCT,
+        payload: data
+      }) 
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+export const deleteProduct = (id) => {
+  return async function() {
+    try {
+      const data = await axios.delete(`http://localhost:3001/product/delete/${id}`);
+
+      return data;
+
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 
@@ -124,6 +157,14 @@ export const postOrder = (payload) => {
   return async function() {
     const data = await axios.post("http://localhost:3001/order", payload);
 
+    return data;
+  }
+}
+
+// MAIL
+export const postEmail = (payload) => {
+  return async function () {
+    const data = await axios.post("http://localhost:3001/mails", payload);
     return data;
   }
 }

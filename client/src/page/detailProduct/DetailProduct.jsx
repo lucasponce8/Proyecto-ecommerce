@@ -7,6 +7,7 @@ import useCart from "../../hooks/useCart";
 import LazyLoad from "react-lazy-load";
 
 import styles from "./DetailProduct.module.css";
+import ButtonEditProduct from "../../components/ButtonEditProduct/ButtonEditProduct";
 
 export const DetailProduct = () => {
   const dispatch = useDispatch();
@@ -61,6 +62,7 @@ export const DetailProduct = () => {
                       stock={detailProd.stock}
                     />
                   </div>
+
                 </div>
               </div>
             </div>

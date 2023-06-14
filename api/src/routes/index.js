@@ -1,8 +1,12 @@
-const { Router } = require("express");
+const { Router, response } = require("express");
 const { Product } = require("../models/Products"); // Importa el modelo de Producto desde su archivo
-const { getCategories } = require("../controllers");
 const { Order } = require("../models/Orders");
+const { getCategories } = require("../controllers");
 const router = Router(); // Crea un nuevo enrutador de Express
+
+
+require("dotenv").config();
+const { APP_PASSWORD_NODEMAILER, APP_MAIL_NODEMAILER } = process.env;
 
 // ruta para postear productos
 router.post("/product", async (req, res) => {
@@ -56,7 +60,7 @@ router.get("/products", async (req, res) => {
 // Define la ruta PUT /productos/:id para actualizar un producto por su ID
 router.put("/product/:id", async (req, res) => {
   const { id } = req.params; // Obtiene el ID del producto a actualizar desde la URL
-  const { name, price } = req.body; // Obtiene los nuevos valores para nombre y precio del cuerpo de la solicitud
+  const { name, price, stock } = req.body; // Obtiene los nuevos valores para nombre y precio del cuerpo de la solicitud
 
   try {
     // Intenta actualizar el producto en la base de datos utilizando el método findByIdAndUpdate de Mongoose.
@@ -64,7 +68,7 @@ router.put("/product/:id", async (req, res) => {
     // El tercer parámetro { new: true } indica que se debe devolver el documento actualizado en la respuesta.
     const updateProduct = await Product.findByIdAndUpdate(
       id, // El ID del producto a actualizar
-      { name, price }, // El nuevo nombre y precio del producto
+      { name, price, stock }, // El nuevo nombre y precio del producto
       { new: true } // Devuelve el producto actualizado en la respuesta
     );
 
@@ -152,12 +156,6 @@ router.get("/categories", async (req, res) => {
 router.post("/order", async (req, res) => {
   const { products, total } = req.body;
 
-  // if(!products && !total) {
-  //     res.status(404).send({
-  //         message: 'Error, no se puede crear la orden porque faltan datos.',
-  //     });
-  // }
-
   try {
       let order = new Order({
           products,
@@ -165,6 +163,20 @@ router.post("/order", async (req, res) => {
       });
 
       await order.save();
+
+      // Actualizar el stock de los productos comprados
+      for (const product of products) {
+        // console.log(product)
+
+        let prodQuantity = product.map(item=>item.cantidad);
+        let prodId = product.map(item=>item.id);
+
+        await Product.findByIdAndUpdate(
+          prodId,
+          { $inc: { stock: -prodQuantity } }, // Restar la cantidad comprada al stock
+          { new: true }
+        );
+      }
 
       res.status(200).send('Orden creada exitosamente');
   } catch (error) {
@@ -187,6 +199,74 @@ router.get("/orders", async (req, res) => {
     console.log(error);
     res.status(500).send({message: "Hubo un problema al traer todas las ordenes"});        
 }
+});
+
+
+
+// MAIL
+router.post('/mails', async (req, res) => {
+
+
+  const mailer = require('nodemailer');
+
+  const transporter = mailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false, 
+    auth: {
+        user: APP_MAIL_NODEMAILER,
+        pass: APP_PASSWORD_NODEMAILER, 
+    },
+  });
+
+  transporter.verify((err, success) => {
+      if(err) {
+          console.log(err);
+      } else {
+          console.log("ready for send emails", success);
+    } 
+  })
+  
+  try {
+    const { email, nombre, apellido, pedido } = req.body;
+    
+    let mailToUser = {
+      from: `'Nombre de ecommerce <${APP_MAIL_NODEMAILER}>'`,
+      to: email,
+      subject: "Pedido de ecommerce",
+      html: `
+      <h1>Hola ${nombre} ${apellido}!</h1>
+      <h3>Su pedido: </h3>
+      ${pedido.map(item => {
+        return (
+          `
+          <li>${item}</li>
+          `
+        )
+      })}
+      `
+    } 
+    
+    if(email && nombre && apellido && pedido) {
+      // let mailSave = new Mail({
+      //   mailToUser
+      // });
+  
+      // await mailSave.save()
+
+      transporter.sendMail(mailToUser)
+      res.status(200).send("Email enviado y guardado correctamente");
+    } else {
+      res.status(404).send('Faltan datos importantes para el mail');
+    }
+
+    
+    
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error.message);
+  }
 })
+
 
 module.exports = router;

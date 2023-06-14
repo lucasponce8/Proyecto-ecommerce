@@ -24,14 +24,14 @@ const SaleBar = () => {
         <div className={styles.saleBarConteiner_cat1}>
           <Link to="/Tecnologia" className={styles.link}>
             <h2>Tecnologia</h2>
-            <AllCards allProducts={productosCategoria1} />
           </Link>
+            <AllCards allProducts={productosCategoria1} />
         </div>
         <div className={styles.saleBarConteiner_cat2}>
           <Link to="/Electrodomesticos" className={styles.link}>
             <h2>Electrodomesticos</h2>
-            <AllCards allProducts={productosCategoria2}/>
           </Link>
+            <AllCards allProducts={productosCategoria2}/>
         </div>
       </div>
     );
