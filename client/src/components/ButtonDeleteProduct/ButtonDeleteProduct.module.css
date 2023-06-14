@@ -1,0 +1,21 @@
+.deleteCart_sendCart {
+    background-color: rgb(202, 56, 56);
+
+    width: 10em;
+    height: 2.5em;
+    margin: .5em auto;
+    color: #fff;
+    padding: .4em;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.deleteCart_sendCart:hover {
+    background-color: rgb(175, 49, 49);
+
+    transition: .2s;
+    color: #fff;
+    transform: scale(105%);
+}

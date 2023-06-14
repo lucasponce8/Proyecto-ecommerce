@@ -5,6 +5,9 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { getFilterCategories, postProduct } from "../../redux/actions";
+import Swal from "sweetalert2";
+
+
 
 import styles from "./CreateProductForm.module.css";
 
@@ -86,8 +89,17 @@ const CreateProductForm = () => {
         stock: '',
       });
 
-      alert("Producto creado con exito");
-      navigate('/products');
+      Swal.fire({
+        title: "Producto creado!",
+        text: "En unos segundos sera redirigido al producto",
+        icon: "success",
+        timer: 3000,
+        showConfirmButton: true,
+      }).then(() => {
+        window.location.href = `/products`;
+
+      });
+      // navigate('/products');
     }
   }
 
@@ -108,6 +120,31 @@ const CreateProductForm = () => {
                 onChange={e => handleChange(e)}
               />
             </div>
+
+            <div>
+              {/* <Widget
+                  tabs="file url"
+                  locale="es"
+                  name="image"
+                  publicKey="d00f029a60bdde9dafab"
+                  previewStep
+                  customTabs={{ preview: effects }}
+                  clearable
+                  onFileSelect={(file) => {
+                    if (!file) {
+                      setFieldValue("image", "");
+                      return;
+                    }
+                    file.done((fileInfo) => {
+                      setFieldValue("image", fileInfo.cdnUrl);
+                    });
+                  }}
+                  onChange={(file) => {
+                    setFieldValue("image", file);
+                  }}
+                /> */}
+            </div>
+
             <div className={styles.create_container_info_inputs}>
               <input 
                 type="text" 
