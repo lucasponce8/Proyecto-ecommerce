@@ -13,6 +13,7 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import MisPedidos from './page/MisPedidos/MisPedidos';
 import FormCart from './components/Form/FormCart';
 import MisProductos from "./page/MisProductos/MisProductos";
+import { PaymentCheck } from "./page/PaymentCheck/PaymentCheck";
 
 import './App.css';
 
@@ -34,6 +35,8 @@ function App() {
           <Route path='/myproducts' element = {<MisProductos/>}/>
           <Route path='/checkout' element = {<FormCart/>}/>
           
+          <Route path="payment/gracias" element={<PaymentCheck />} />
+
           <Route path='/*' element = {<PageNotFound/>}/> 
         </Routes>
         <Footer />  

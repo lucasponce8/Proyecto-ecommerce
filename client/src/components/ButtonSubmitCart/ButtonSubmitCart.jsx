@@ -3,7 +3,7 @@ import useCart from "../../hooks/useCart";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 
-import { postEmail, postOrder } from "../../redux/actions";
+import { postEmail, postOrder, postPayment } from "../../redux/actions";
 
 import styles from "./ButtonSubmitCart.module.css";
 
@@ -21,7 +21,7 @@ export const ButtonSubmitCart = ({ values }) => {
     return total;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e)  => {
     e.preventDefault();
 
     if (cart.length > 0) {
@@ -38,29 +38,47 @@ export const ButtonSubmitCart = ({ values }) => {
       let msj = cartOrder.products.map(prods => prods.map(item => item.cantidad + ': ' + item.producto))
 
       let orderMsj = msj.map(items => items.join(' '))
+        
+      
+      // const infoClient = {
+      //   email: values.email,
+      //   nombre: values.nombre,
+      //   apellido: values.apellido,
+      //   pedido: orderMsj,
+      // };
+      
+        const products = cart.map((item) => ({
+          id: item._id,
+          title: item.name,
+          image: item.image,
+          description: item.description,
+          category: item.category,
+          quantity: item.quantity,
+          price: item.price
+        }));
+
+        
+        dispatch(postPayment({ products: products, clientData: values }));   
+        // clearCart();
+      
+
+  
 
 
-      const infoClient = {
-        email: values.email,
-        nombre: values.nombre,
-        apellido: values.apellido,
-        pedido: orderMsj,
-      };
 
-      dispatch(postEmail(infoClient));
-      dispatch(postOrder(cartOrder));
-      clearCart();
+      // dispatch(postEmail(infoClient));
+      // dispatch(postOrder(cartOrder));
 
-      Swal.fire({
-        title: "Compra realizada!",
-        text: "En unos segundos sera redirigido al inicio",
-        icon: "success",
-        timer: 3000,
-        showConfirmButton: false,
-      }).then(() => {
-        //  a la página de inicio después de 2 segundRedirecciónos
-        window.location.href = "/";
-      });
+      // Swal.fire({
+      //   title: "Compra realizada!",
+      //   text: "En unos segundos sera redirigido al inicio",
+      //   icon: "success",
+      //   // timer: 3000,
+      //   showConfirmButton: false,
+      // }).then(() => {
+      //   //  a la página de inicio después de 2 segundRedirecciónos
+      //   window.location.href = "/";
+      // });
     } else {
       alert("No se pudo realizar la compra");
     }

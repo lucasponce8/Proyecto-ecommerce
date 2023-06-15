@@ -21,6 +21,11 @@ export function CartProvider({children}) {
   //   setCart(storedCart);
   // }, []);
 
+  console.warn('---CART---')
+  console.log(cart)
+
+
+
 
   // Para agregar un producto al carrito
   const addToCart = product => {

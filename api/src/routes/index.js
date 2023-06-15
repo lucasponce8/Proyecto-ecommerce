@@ -2,6 +2,7 @@ const { Router, response } = require("express");
 const { Product } = require("../models/Products"); // Importa el modelo de Producto desde su archivo
 const { Order } = require("../models/Orders");
 const { getCategories } = require("../controllers");
+
 const router = Router(); // Crea un nuevo enrutador de Express
 
 
@@ -153,6 +154,11 @@ router.get("/categories", async (req, res) => {
 // RUTAS PARA LAS ORDENES
 
 // ruta para postear las ordenes
+const mercadopago = require("mercadopago");
+
+const {MERCADOPAGO_KEY} = process.env;
+
+mercadopago.configure({access_token: MERCADOPAGO_KEY});
 router.post("/order", async (req, res) => {
   const { products, total } = req.body;
 
@@ -266,7 +272,45 @@ router.post('/mails', async (req, res) => {
     console.log(error);
     res.status(500).send(error.message);
   }
-})
+});
+
+
+// MERCADO PAGO
+router.post('/payment', async(req, res) => {
+  try {
+    const products = req.body.products;
+
+    const preferenceItems = products.map((product) => {
+      return {
+        id: product._id,
+        title: product.name,
+        currency_id: 'ARS',
+        picture_url: product.image,
+        description: product.description,
+        category_id: product.category,
+        quantity: product.quantity,
+        unit_price: product.price
+      };
+    });
+
+    let preference = {
+      items: preferenceItems,
+      back_urls:{
+        success: `http://localhost:3000/payment/gracias`,
+        failure: `http://localhost:3000/payment/error`,
+        pending:'',
+    },
+      auto_return: 'approved',
+      binary_mode: true,
+    }
+
+    mercadopago.preferences.create(preference).then((resp) => {
+      res.status(200).send({ resp });
+    })
+  } catch (error) {
+      res.status(404).send({error:error.message});
+  }
+});
 
 
 module.exports = router;
