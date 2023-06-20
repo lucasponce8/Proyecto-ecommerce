@@ -16,6 +16,8 @@ export const POST_ORDER = "POST_ORDER";
 
 export const POST_MAIL = "POST_MAIL";
 
+export const POST_PAYMENT = "POST_PAYMENT";
+
 
 export function getProducts() {
   return async function (dispatch) {
@@ -157,6 +159,7 @@ export const postOrder = (payload) => {
   return async function() {
     const data = await axios.post("http://localhost:3001/order", payload);
 
+
     return data;
   }
 }
@@ -168,3 +171,18 @@ export const postEmail = (payload) => {
     return data;
   }
 }
+
+// MERCADOPAGO
+export const postPayment = (data) => {
+  return async function () {
+    try {
+      await axios
+        .post("http://localhost:3001/payment", data)
+        .then((response) => {
+          window.location.href = response.data.url;
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

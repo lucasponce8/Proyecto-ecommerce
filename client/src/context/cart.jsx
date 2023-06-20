@@ -16,11 +16,6 @@ export function CartProvider({children}) {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  // useEffect(() => {
-  //   const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
-  //   setCart(storedCart);
-  // }, []);
-
 
   // Para agregar un producto al carrito
   const addToCart = product => {
@@ -85,6 +80,31 @@ export function CartProvider({children}) {
   }
 
 
+
+  const onAdd = () => {
+    const calculateCartTotal = () => {
+      let total = 0;
+  
+      for (const product of cart) {
+        total += calculateTotalItem(product);
+      }
+  
+      return total;
+    };
+
+
+    let totalOrder = calculateCartTotal();
+    const cartOrder = {
+      products: cart.map((product) => [
+        { cantidad: product.quantity, producto: product.name, id: product._id },
+      ]),
+      total: totalOrder,
+    };
+
+
+    return cartOrder;
+  }
+
   return(
       <CartContext.Provider 
         value = {{
@@ -93,7 +113,8 @@ export function CartProvider({children}) {
           clearCart,
           deleteProductCart,
           calculateTotalItem,
-          deleteProduct
+          deleteProduct,
+          onAdd
         } }
       >
         {children}

@@ -26,9 +26,9 @@ server.use("/", routes);
 
 
 //  Analiza las cookies enviadas con las solicitudes entrantes del cliente.
-server.use(cookieParser())
+server.use(cookieParser());
 // Registra las solicitudes entrantes del cliente y las respuestas del servidor en la consola en modo de desarrollo.
-server.use(morgan('dev'))
+server.use(morgan('dev'));
 
 // Configura las cabeceras de respuesta para permitir el acceso a recursos de origen cruzado (CORS).
 server.use((req, res, next) => {
