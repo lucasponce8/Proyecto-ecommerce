@@ -2,13 +2,36 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import useCart from "../../hooks/useCart";
 
+import { useLocation } from 'react-router-dom';
 import { postEmail, postOrder } from '../../redux/actions';
 
 export const PaymentCheck = () => {
 
     const dispatch = useDispatch();
 
-    const { cart, calculateTotalItem, clearCart } = useCart();
+
+
+
+    const { cart, calculateTotalItem, clearCart, onAdd } = useCart();
+
+
+
+
+
+
+    // let msj = cartOrder.products.map(prods => prods.map(item => item.cantidad + ': ' + item.producto))
+
+    // let orderMsj = msj.map(items => items.join(' '))
+
+
+    // const handleSubmit = (e) => {
+    //   e.preventDefault();
+
+  
+  
+      
+      
+    // }
 
     const calculateCartTotal = () => {
       let total = 0;
@@ -20,8 +43,8 @@ export const PaymentCheck = () => {
       return total;
     };
 
-
     let totalOrder = calculateCartTotal();
+
     const cartOrder = {
       products: cart.map((product) => [
         { cantidad: product.quantity, producto: product.name, id: product._id },
@@ -29,34 +52,28 @@ export const PaymentCheck = () => {
       total: totalOrder,
     };
 
-    console.log(cartOrder)
-
-    let msj = cartOrder.products.map(prods => prods.map(item => item.cantidad + ': ' + item.producto))
-
-    let orderMsj = msj.map(items => items.join(' '))
-
-
-
-
+    // console.log('este soy io :0', cartOrder.products)
+    
     useEffect(() => {
-        const infoClient = {
-          email: cart[0]?.clientData?.email,
-          nombre: cart[0]?.clientData?.nombre,
-          apellido: cart[0]?.clientData?.apellido,
-          pedido: orderMsj,
-        };
-
-        console.log(infoClient)
       
-        if (infoClient.email && infoClient.nombre && infoClient.apellido) {
-          dispatch(postEmail(infoClient));
-          dispatch(postOrder(cartOrder));
-          clearCart();
+      setTimeout(() => {
+        
+        if(cartOrder) {
+          console.log('Si pude' , cartOrder)
+          dispatch(postOrder(cartOrder))
+          clearCart()
+        } else {
+          console.log('No puedo :(', cartOrder)
         }
-      }, [dispatch]);
-      
+      }, 5000);
+
+    }, [])
 
   return (
-    <h1>Pago realizado</h1>
+    <>    
+      <div>
+        <h1>Pago realizado</h1>
+      </div>
+    </>
   )
 }

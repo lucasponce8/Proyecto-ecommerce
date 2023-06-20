@@ -12,6 +12,7 @@ import {
   POST_ORDER,
   POST_MAIL,
   DELETE_PRODUCT,
+  POST_PAYMENT,
 } from "../actions";
 
 const initialState = {
@@ -97,6 +98,10 @@ export function rootReducer(state = initialState, action) {
         ...state,
       }
     case POST_MAIL:
+      return {
+        ...state,
+      }  
+    case POST_PAYMENT:
       return {
         ...state,
       }  

@@ -153,12 +153,7 @@ router.get("/categories", async (req, res) => {
 
 // RUTAS PARA LAS ORDENES
 
-// ruta para postear las ordenes
-const mercadopago = require("mercadopago");
 
-const {MERCADOPAGO_KEY} = process.env;
-
-mercadopago.configure({access_token: MERCADOPAGO_KEY});
 router.post("/order", async (req, res) => {
   const { products, total } = req.body;
 
@@ -276,6 +271,14 @@ router.post('/mails', async (req, res) => {
 
 
 // MERCADO PAGO
+
+// ruta para postear las ordenes
+const mercadopago = require("mercadopago");
+
+const {MERCADOPAGO_KEY} = process.env;
+
+mercadopago.configure({access_token: MERCADOPAGO_KEY});
+
 router.post('/payment', async(req, res) => {
   try {
     const products = req.body.products;
@@ -304,9 +307,13 @@ router.post('/payment', async(req, res) => {
       binary_mode: true,
     }
 
-    mercadopago.preferences.create(preference).then((resp) => {
-      res.status(200).send({ resp });
-    })
+    const response = await mercadopago.preferences.create(preference);
+
+    res.status(200).send({ url: response.body.init_point})
+
+    // mercadopago.preferences.create(preference).then((resp) => {
+    //   res.status(200).send({ resp });
+    // })
   } catch (error) {
       res.status(404).send({error:error.message});
   }

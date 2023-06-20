@@ -178,7 +178,7 @@ export const postPayment = (data) => {
       await axios
         .post("http://localhost:3001/payment", data)
         .then((response) => {
-          window.location.href = response.data.resp.body.init_point;
+          window.location.href = response.data.url;
         });
     } catch (error) {
       console.log(error);
