@@ -28,46 +28,37 @@ export const PaymentCheck = () => {
     //   e.preventDefault();
 
   
+
   
-      
+
 
     useEffect(() => {
-      const calculateCartTotal = () => {
-        let total = 0;
-  
-        for (const product of cart) {
-          total += calculateTotalItem(product);
-        }
-  
-        return total;
-      };
-  
-      const totalOrder = calculateCartTotal();
-  
-      const cartOrder = {
-        products: cart.map((product) => [
-          { cantidad: product.quantity, producto: product.name, id: product._id },
-        ]),
-        total: totalOrder,
-      };
-  
-      const handleOrderPosted = () => {
-        setIsOrderPosted(true);
-      };
-
-
       if (!isOrderPosted && cart.length > 0) {
-        dispatch(postOrder(cartOrder)).then(handleOrderPosted);
-      }
-      
-
-    }, [cart, calculateTotalItem, dispatch, isOrderPosted]);
+        const calculateCartTotal = () => {
+          let total = 0;
   
-    useEffect(() => {
-      if (isOrderPosted) {
-        clearCart();
+          for (const product of cart) {
+            total += calculateTotalItem(product);
+          }
+  
+          return total;
+        };
+  
+        const totalOrder = calculateCartTotal();
+  
+        const cartOrder = {
+          products: cart.map((product) => [
+            { cantidad: product.quantity, producto: product.name, id: product._id },
+          ]),
+          total: totalOrder,
+        };
+  
+        dispatch(postOrder(cartOrder)).then(() => {
+          setIsOrderPosted(true);
+          clearCart();
+        });
       }
-    }, [clearCart, isOrderPosted]);
+    }, [cart, calculateTotalItem, clearCart, dispatch, isOrderPosted]);
   
 
 
