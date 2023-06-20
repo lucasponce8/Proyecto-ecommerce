@@ -23,6 +23,7 @@ const initialState = {
   isLoading: false,
 
   orders: [],
+
 }
 
 export function rootReducer(state = initialState, action) {
@@ -95,16 +96,16 @@ export function rootReducer(state = initialState, action) {
       }
     case POST_ORDER:
       return {
-        ...state,
+        ...state
       }
     case POST_MAIL:
       return {
         ...state,
       }  
-    case POST_PAYMENT:
-      return {
-        ...state,
-      }  
+      case POST_ORDER:
+        return {
+          ...state
+        }; 
     default:
       return state;
   }
